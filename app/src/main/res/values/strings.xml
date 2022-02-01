@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">Answering</string>
+    <string name="question1">How old are you?</string><string name="hint1">-I\'m … years old</string>
+    <string name="question2">Do you have pets?</string><string name="hint2">-I have a dog and two cats</string>
+    <string name="question3">Who is your best friend?</string><string name="hint3">-My best friend is…</string>
+    <string name="question4">What’s your name?</string><string name="hint4">-My name is…</string>
+    <string name="question5">Where are you from?</string><string name="hint5">-I am from…</string>
+    <string name="question6">What company do you work for?</string><string name="hint6">-I work for…</string>
+    <string name="question7">Where are you from?</string><string name="hint7">-I am from…</string>
+    <string name="question8">Are you married?</string><string name="hint8">–No , but looking for someone nice…</string>
+    <string name="question9">How many children do you have?</string><string name="hint9">–I don\'t have any children</string>
+    <string name="question10">Do you have any siblings?</string><string name="hint10">–I have a brothers and two sisters.</string>
+    <string name="question11">Who do you live with?</string><string name="hint11">–I live with my wife and children.</string>
+    <string name="question12">What time do you get up?</string><string name="hint12">-I usually get up at 5.30am.</string>
+    <string name="question13">When do you do morning exercises?</string><string name="hint13">-I often do morning exercises at 6am.</string>
+    <string name="question14">What Are Your Hobbies?</string><string name="hint14">–I like playing football, reading books, skateboarding, swimming.</string>
+    <string name="question15">What’s your favorite food?</string><string name="hint15">-My favorite food is…</string>
+    <string name="question16">What’s your favorite color?</string><string name="hint16">-My favorite color is…</string>
+    <string name="question17">How old are you?</string><string name="hint17">-Thirty-eight. I\'m Thirty-eight years old.</string>
+    <string name="question18">Do you speak English?</string><string name="hint18">Yes, I do!</string>
+    <string name="question19">What is your native language?</string><string name="hint19">-My native language is Brazilian Portuguese.</string>
+    <string name="question20">How are you?</string><string name="hint20">-I am fine, thanks!</string>
+    <string name="question21">What do you think about your job?</string><string name="hint21">-It\'s a good job.</string>
+    <string name="question22">What are you going to do tomorrow?</string><string name="hint22">-I will watch TV and play football.</string>
+    <string name="question23">How\'s the weather?</string><string name="hint23">-The sun is shining.</string>
+    <string name="question24">Where did you study English?</string><string name="hint24">-I learned on the Internet.</string>
+
+
+
+
+
+</resources>

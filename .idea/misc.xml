@@ -7,8 +7,13 @@
         <entry key="..\:/DEV/Answering/app/src/main/res/drawable/button_color.xml" value="0.1" />
         <entry key="..\:/DEV/Answering/app/src/main/res/drawable/container_components.xml" value="0.17407407407407408" />
         <entry key="..\:/DEV/Answering/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
-        <entry key="..\:/DEV/Answering/app/src/main/res/layout/activity_main.xml" value="0.1" />
-        <entry key="..\:/DEV/Answering/app/src/main/res/layout/activity_tela_pessoal_qt.xml" value="0.20108695652173914" />
+        <entry key="..\:/DEV/Answering/app/src/main/res/drawable/playhint.xml" value="0.2703125" />
+        <entry key="..\:/DEV/Answering/app/src/main/res/layout/activity_job_interview.xml" value="0.1" />
+        <entry key="..\:/DEV/Answering/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/DEV/Answering/app/src/main/res/layout/activity_tela_pessoal_qt.xml" value="0.264" />
+        <entry key="..\:/DEV/Answering/app/src/main/res/layout/beginner.xml" value="0.16510416666666666" />
+        <entry key="..\:/DEV/Answering/app/src/main/res/layout/daybyday_qt.xml" value="0.13020833333333334" />
+        <entry key="..\:/DEV/Answering/app/src/main/res/layout/pessoal_qt.xml" value="0.264" />
       </map>
     </option>
   </component>

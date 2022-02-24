@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hidehints">Esconder dicas</string>
+    <string name="subtitle">Respondendo e aprendendo.</string>
+    <string name="pergunta">Pergunta:</string>
+    <string name="dica">Dica:</string>
+    <string name="nohintsavailable">Não há dicas disponíveis.</string>
+    <string name="firstLevel">Nível básico - Iniciante</string>
+    <string name="secondLevel">Nível Intermediário</string>
+    <string name="thirdLevel">Nível Avançado</string>
+    <string name="allLevels">Todas as Perguntas</string>
+</resources>

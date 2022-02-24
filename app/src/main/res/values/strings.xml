@@ -1,32 +1,133 @@
 <resources>
-    <string name="app_name">Answering</string>
-    <string name="question1">How old are you?</string><string name="hint1">-I\'m … years old</string>
-    <string name="question2">Do you have pets?</string><string name="hint2">-I have a dog and two cats</string>
-    <string name="question3">Who is your best friend?</string><string name="hint3">-My best friend is…</string>
-    <string name="question4">What’s your name?</string><string name="hint4">-My name is…</string>
-    <string name="question5">Where are you from?</string><string name="hint5">-I am from…</string>
-    <string name="question6">What company do you work for?</string><string name="hint6">-I work for…</string>
-    <string name="question7">Where are you from?</string><string name="hint7">-I am from…</string>
-    <string name="question8">Are you married?</string><string name="hint8">–No , but looking for someone nice…</string>
-    <string name="question9">How many children do you have?</string><string name="hint9">–I don\'t have any children</string>
-    <string name="question10">Do you have any siblings?</string><string name="hint10">–I have a brothers and two sisters.</string>
-    <string name="question11">Who do you live with?</string><string name="hint11">–I live with my wife and children.</string>
-    <string name="question12">What time do you get up?</string><string name="hint12">-I usually get up at 5.30am.</string>
-    <string name="question13">When do you do morning exercises?</string><string name="hint13">-I often do morning exercises at 6am.</string>
-    <string name="question14">What Are Your Hobbies?</string><string name="hint14">–I like playing football, reading books, skateboarding, swimming.</string>
-    <string name="question15">What’s your favorite food?</string><string name="hint15">-My favorite food is…</string>
-    <string name="question16">What’s your favorite color?</string><string name="hint16">-My favorite color is…</string>
-    <string name="question17">How old are you?</string><string name="hint17">-Thirty-eight. I\'m Thirty-eight years old.</string>
-    <string name="question18">Do you speak English?</string><string name="hint18">Yes, I do!</string>
-    <string name="question19">What is your native language?</string><string name="hint19">-My native language is Brazilian Portuguese.</string>
-    <string name="question20">How are you?</string><string name="hint20">-I am fine, thanks!</string>
-    <string name="question21">What do you think about your job?</string><string name="hint21">-It\'s a good job.</string>
-    <string name="question22">What are you going to do tomorrow?</string><string name="hint22">-I will watch TV and play football.</string>
-    <string name="question23">How\'s the weather?</string><string name="hint23">-The sun is shining.</string>
-    <string name="question24">Where did you study English?</string><string name="hint24">-I learned on the Internet.</string>
+    <string name="app_name" translatable="false">Answering</string>
+    <string name="hidehints">Hide hints</string>
+
+    <string name="question1" translatable="false">How old are you?</string>
+    <string name="hint1" translatable="false">-I\'m … years old</string>
+    <string name="question2" translatable="false">Do you have pets?</string>
+    <string name="hint2" translatable="false">-I have a dog and two cats</string>
+    <string name="question3" translatable="false">Who is your best friend?</string>
+    <string name="hint3" translatable="false">-My best friend is…</string>
+    <string name="question4" translatable="false">What’s your name?</string>
+    <string name="hint4" translatable="false">-My name is…</string>
+    <string name="question5" translatable="false">Where are you from?</string>
+    <string name="hint5" translatable="false">-I am from…</string>
+    <string name="question6" translatable="false">What company do you work for?</string>
+    <string name="hint6" translatable="false">-I work for…</string>
+    <string name="question7" translatable="false">Where are you from?</string>
+    <string name="hint7" translatable="false">-I am from…</string>
+    <string name="question8" translatable="false">Are you married?</string>
+    <string name="hint8" translatable="false">–No , but looking for someone nice…</string>
+    <string name="question9" translatable="false">What time is it?</string>
+    <string name="hint9" translatable="false">-It is 08:33 am</string>
+    <string name="question10" translatable="false">Can you describe your city or town?</string>
+    <string name="hint10" translatable="false">Yes, it\'s big, have many buildings and a great airport.</string>
+    <string name="question11" translatable="false">Who do you live with?</string>
+    <string name="hint11" translatable="false">–I live with my wife and children.</string>
+    <string name="question12" translatable="false"></string>
+    <string name="hint12" translatable="false"></string>
+    <string name="question13" translatable="false">When do you do morning exercises?</string>
+    <string name="hint13" translatable="false">-I often do morning exercises at 6am.</string>
+    <string name="question14" translatable="false">What Are Your Hobbies?</string>
+    <string name="hint14" translatable="false">–I like playing football, reading books, skateboarding, swimming.</string>
+    <string name="question15" translatable="false">What’s your favorite food?</string>
+    <string name="hint15" translatable="false">-My favorite food is…</string>
+    <string name="question16" translatable="false">What’s your favorite color?</string>
+    <string name="hint16" translatable="false">-My favorite color is…</string>
+    <string name="question17" translatable="false">What do you study?</string>
+    <string name="hint17" translatable="false">-I study English and…</string>
+    <string name="question18" translatable="false">Do you speak English?</string>
+    <string name="hint18" translatable="false">Yes, I do!</string>
+    <string name="question19" translatable="false">Can you play football?</string>
+    <string name="hint19" translatable="false">-No, I play volleyball.</string>
+    <string name="question20" translatable="false">How are you?</string>
+    <string name="hint20" translatable="false">-I am fine, thanks!</string>
+    <string name="question21" translatable="false">Why do you learn English?</string>
+    <string name="hint21" translatable="false">-To get a better job.</string>
+    <string name="question22" translatable="false">What\'s your Job?</string>
+    <string name="hint22" translatable="false">I\'m a salesman.</string>
+    <string name="question23" translatable="false">Can you dance well?</string>
+    <string name="hint23" translatable="false">-Yes, I can dance</string>
+    <string name="question24" translatable="false">Can you describe yourself in three words?</string>
+    <string name="hint24" translatable="false">I\'m small, strong and young.</string>
+    <string name="question25" translatable="false">How many people are in your family?</string>
+    <string name="hint25" translatable="false">-Three people, me, my wife and my son.</string>
+    <string name="question26" translatable="false">Can you describe your house?</string>
+    <string name="hint26" translatable="false">It has a living room, a kitchen, one bedroom an a bathroom.</string>
+    <string name="question27" translatable="false">Are you a vegetarian?</string>
+    <string name="hint27" translatable="false">No, I\'m not.</string>
+    <string name="question28" translatable="false">Are you happy today?</string>
+    <string name="hint28" translatable="false">Yes, I am.</string>
+    <string name="question29" translatable="false">What\'s your surname</string>
+    <string name="hint29" translatable="false">-My surname is Silva.</string>
 
 
+    <string name="qinterm1" translatable="false">What annoys you most?</string>
+    <string name="hinterm1" translatable="false">-When someone talk too much.</string>
+    <string name="qinterm2" translatable="false">How old where you when you start working?</string>
+    <string name="hinterm2" translatable="false">-I was seventeen years old.</string>
+    <string name="qinterm3" translatable="false">What did you do on Saturday evening?</string>
+    <string name="hinterm3" translatable="false">-We went to a party.</string>
+    <string name="qinterm4" translatable="false">What motivates you to work hard?</string>
+    <string name="hinterm4" translatable="false">-My family and my goals.</string>
+    <string name="qinterm5" translatable="false">What would you sing at karaoke night?</string>
+    <string name="hinterm5" translatable="false">-I would sing Michael Jackson!</string>
+    <string name="qinterm6" translatable="false">What is your native language?</string>
+    <string name="hinterm6" translatable="false">-My native language is Brazilian Portuguese.</string>
+    <string name="qinterm7" translatable="false">What is the phone app you use most?</string>
+    <string name="hinterm7" translatable="false">-I like to use Instagram.</string>
+    <string name="qinterm8" translatable="false">What would you like right now?</string>
+    <string name="hinterm8" translatable="false">-A cup of coffee</string>
+    <string name="qinterm9" translatable="false">What do you like doing in your free time?</string>
+    <string name="hinterm9" translatable="false">I like hanging out downtown with my friends</string>
+    <string name="qinterm10" translatable="false">Where is the nearest bank?</string>
+    <string name="hinterm10" translatable="false">-On the corner.</string>
+    <string name="qinterm11" translatable="false">Why don\'t we go out?</string>
+    <string name="hinterm11" translatable="false">-No, let\'s stay home.</string>
+    <string name="qinterm12" translatable="false">What type of music do you like listening to?</string>
+    <string name="hinterm12" translatable="false">I like listening to pop music.</string>
+    <string name="qinterm13" translatable="false">Which country has the best food?</string>
+    <string name="hinterm13" translatable="false">-Brazil, I guess.</string>
+    <string name="qinterm14" translatable="false">Do you prefer pasta or rice?</string>
+    <string name="hinterm14" translatable="false">-I prefer pasta with tomato paste</string>
+    <string name="qinterm15" translatable="false">How would your friends describe you?</string>
+    <string name="hinterm15" translatable="false">-A crazy and nice person.</string>
+    <string name="qinterm16" translatable="false">What would you do if you won the lottery?</string>
+    <string name="hinterm16" translatable="false">-I would travel and buy a big house.</string>
+    <string name="qinterm17" translatable="false">Do you have any siblings?</string>
+    <string name="hinterm17" translatable="false">–I have a brothers and two sisters.</string>
+    <string name="qinterm18" translatable="false">Are you an introvert or an extrovert?</string>
+    <string name="hinterm18" translatable="false">-I am somewhere in between.</string>
+    <string name="qinterm19" translatable="false">How many children do you have?</string>
+    <string name="hinterm19" translatable="false">–I don\'t have any children</string>
+    <string name="qinterm20" translatable="false">What time do you get up?</string>
+    <string name="hinterm20" translatable="false">-I usually get up at 5.30am.</string>
+    <string name="qinterm21" translatable="false">Is there a bakery near here?</string>
+    <string name="hinterm21" translatable="false">-Yes, it\'s just down the road.</string>
+    <string name="qinterm22" translatable="false">What do you like to do on weekends?</string>
+    <string name="hinterm22" translatable="false">-I like playing football, reading and listening to music.</string>
+    <string name="qinterm23" translatable="false">What would you like to eat right now?</string>
+    <string name="hinterm23" translatable="false">I’d like a burger, chips and soda.</string>
 
+
+    <string name="qadvanc1" translatable="false">Are you curious?</string>
+    <string name="hadvanc1" translatable="false">Tá pronto ainda não.</string>
+    <string name="qjob" translatable="false">Do you have pets?</string>
+    <string name="hjob" translatable="false">-I have a dog and two cats</string>
+    <string name="qjob3" translatable="false">Who is your best friend?</string>
+    <string name="hjob3" translatable="false">-My best friend is…</string>
+    <string name="qjob4" translatable="false">What’s your name?</string>
+    <string name="hjob4" translatable="false">-My name is…</string>
+    <string name="qjob5" translatable="false">Where are you from?</string>
+    <string name="hjob5" translatable="false">-I am from…</string>
+    <string name="subtitle">Answer and learn!</string>
+    <string name="pergunta">Question:</string>
+    <string name="dica">Hint:</string>
+    <string name="nohintsavailable">No hints available.</string>
+    <string name="firstLevel">Basic Level - Beginner</string>
+    <string name="secondLevel">Intermediate Level</string>
+    <string name="thirdLevel">Advanced Level</string>
+    <string name="allLevels">All Random Questions</string>
 
 
 </resources>

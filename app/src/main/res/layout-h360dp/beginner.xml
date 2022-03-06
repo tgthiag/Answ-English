@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/background"
+    android:gravity="center"
+    tools:context=".activities.beginner">
+
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView"
+        xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        ads:adSize="BANNER"
+        ads:adUnitId="ca-app-pub-3940256099942544/6300978111"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/bt_reward"
+            style="@style/bt_secondary"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:text="@string/click_hereADS"
+            android:textSize="11sp" />
+        <TextView
+            android:id="@+id/txt_moedas"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:drawableStart="@drawable/coin"
+            android:text=""
+            android:textColor="@color/white"
+            android:layout_gravity="center"
+            android:padding="13dp"
+            android:textSize="14dp"
+            style="@style/ContainerComponents"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="206dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/container_components"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/playquestion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:text="@string/pergunta"
+            android:textColor="@color/white"
+            app:drawableBottomCompat="@drawable/playhint" />
+
+        <TextView
+            android:id="@+id/cxTexto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/playhint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:text="@string/dica"
+            android:textColor="@color/white"
+            app:drawableBottomCompat="@drawable/playhint" />
+
+        <TextView
+            android:id="@+id/cxHint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="2">
+    <CheckBox
+        android:id="@+id/check_dicas"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:text="@string/hidehints"
+        android:layout_marginStart="30dp"
+        android:textSize="14sp"
+        android:layout_gravity="start"
+        android:layout_weight="1"/>
+
+        <Button
+            android:id="@+id/btAutomatic"
+            style="@style/bt_secondary"
+            android:layout_width="101dp"
+            android:layout_height="35dp"
+            android:layout_gravity="end"
+            android:layout_marginEnd="30dp"
+            android:layout_weight="1"
+            android:layout_marginBottom="1dp"
+            android:text="@string/automatizar"
+            android:textAllCaps="false"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="2">
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/bt_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="60dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/arrow_leftt"
+            app:icon="@drawable/arrow_leftt" />
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/bt_front"
+            android:layout_width="wrap_content"
+            android:background="@drawable/arrow_right"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="60dp"
+            android:layout_marginBottom="0dp"
+            android:layout_weight="1"
+            app:icon="@drawable/arrow_right" />
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

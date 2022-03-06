@@ -3,15 +3,34 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/DEV/Answering/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.15" />
         <entry key="..\:/DEV/Answering/app/src/main/res/drawable/background.xml" value="0.18385416666666668" />
         <entry key="..\:/DEV/Answering/app/src/main/res/drawable/button_color.xml" value="0.1" />
+        <entry key="..\:/DEV/Answering/app/src/main/res/drawable/coin.xml" value="0.15" />
+        <entry key="..\:/DEV/Answering/app/src/main/res/drawable/config.xml" value="0.2101851851851852" />
+        <entry key="..\:/DEV/Answering/app/src/main/res/drawable/container_bt.xml" value="0.15" />
         <entry key="..\:/DEV/Answering/app/src/main/res/drawable/container_components.xml" value="0.17407407407407408" />
+        <entry key="..\:/DEV/Answering/app/src/main/res/drawable/container_txt.xml" value="0.15" />
         <entry key="..\:/DEV/Answering/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
         <entry key="..\:/DEV/Answering/app/src/main/res/drawable/playhint.xml" value="0.2703125" />
+        <entry key="..\:/DEV/Answering/app/src/main/res/layout-h320dp/activity_main.xml" value="0.21829710144927536" />
+        <entry key="..\:/DEV/Answering/app/src/main/res/layout-h360dp/activity_main.xml" value="0.8" />
+        <entry key="..\:/DEV/Answering/app/src/main/res/layout-h360dp/beginner.xml" value="1.0" />
+        <entry key="..\:/DEV/Answering/app/src/main/res/layout-h400dp/activity_main.xml" value="0.1640625" />
+        <entry key="..\:/DEV/Answering/app/src/main/res/layout-h480dp/activity_main.xml" value="0.264" />
+        <entry key="..\:/DEV/Answering/app/src/main/res/layout-h480dp/beginner.xml" value="0.536" />
+        <entry key="..\:/DEV/Answering/app/src/main/res/layout-h600dp/activity_main.xml" value="0.2" />
+        <entry key="..\:/DEV/Answering/app/src/main/res/layout-h600dp/beginner.xml" value="0.1609375" />
+        <entry key="..\:/DEV/Answering/app/src/main/res/layout-h800dp/activity_main.xml" value="0.152" />
+        <entry key="..\:/DEV/Answering/app/src/main/res/layout-large/activity_main.xml" value="0.4" />
+        <entry key="..\:/DEV/Answering/app/src/main/res/layout-normal/activity_main.xml" value="0.1609375" />
+        <entry key="..\:/DEV/Answering/app/src/main/res/layout-small/activity_main.xml" value="0.25" />
+        <entry key="..\:/DEV/Answering/app/src/main/res/layout-small/beginner.xml" value="0.2078804347826087" />
         <entry key="..\:/DEV/Answering/app/src/main/res/layout/activity_job_interview.xml" value="0.1" />
-        <entry key="..\:/DEV/Answering/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/DEV/Answering/app/src/main/res/layout/activity_main.xml" value="0.152" />
+        <entry key="..\:/DEV/Answering/app/src/main/res/layout/activity_settings_screen.xml" value="0.264" />
         <entry key="..\:/DEV/Answering/app/src/main/res/layout/activity_tela_pessoal_qt.xml" value="0.264" />
-        <entry key="..\:/DEV/Answering/app/src/main/res/layout/beginner.xml" value="0.16510416666666666" />
+        <entry key="..\:/DEV/Answering/app/src/main/res/layout/beginner.xml" value="0.536" />
         <entry key="..\:/DEV/Answering/app/src/main/res/layout/daybyday_qt.xml" value="0.13020833333333334" />
         <entry key="..\:/DEV/Answering/app/src/main/res/layout/pessoal_qt.xml" value="0.264" />
       </map>

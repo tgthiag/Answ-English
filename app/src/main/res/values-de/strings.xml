@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="click_hereADS">Anzeige, um Münzen zu verdienen!</string>
+    <string name="hidehints">Tipps verstecken</string>
+    <string name="subtitle">Antworten und lernen!</string>
+    <string name="pergunta">Frage:</string>
+    <string name="automatizar">Automatisierer</string>
+    <string name="dica">Hinweis Beispiel:</string>
+    <string name="nohintsavailable">Keine Hinweise verfügbar.</string>
+    <string name="firstLevel">Grundstufe - Anfänger</string>
+    <string name="secondLevel">Mittelstufe</string>
+    <string name="thirdLevel">Fortgeschrittene Stufe (keine Hinweise)</string>
+    <string name="beginInterm">Grundstufe + Mittelstufe</string>
+    <string name="allLevels">Alle Zufallsfragen</string>
+    <string name="coin">Coins: %1$d</string>
+    <string name="a_guy_sitting_in_a_big_interrogation_mark">Ein Typ, der in einem großen Verhörraum sitzt.</string>
+    <string name="configuration">App Einstellungen</string>
+    <string name="time_between_each_question_automatic">Zeit zwischen jeder Frage (Automatisch):</string>
+    <string name="all_questions">Alle Fragen</string>
+    <string name="beginner_intermediate">Grundstufe + Mittelstufe</string>
+    <string name="padr_o_9_segundos">Standard: 9 Sekunden</string>
+    <string name="advanced">Fortschrittlich:</string>
+    <string name="beginner">Anfänger:</string>
+    <string name="default_9_seconds">Standard: 9 Sekunden</string>
+    <string name="intermediate">mittlere</string>
+    <string name="aplly">Anwenden</string>
+
+</resources>

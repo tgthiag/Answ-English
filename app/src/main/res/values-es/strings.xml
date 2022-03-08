@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="click_hereADS">¡Mira un anuncio para ganar monedas!</string>
+    <string name="hidehints">Ocultar sugerencia</string>
+    <string name="subtitle">¡Responde y aprende!</string>
+    <string name="pergunta">Pregunta:</string>
+    <string name="automatizar">Automatización</string>
+    <string name="dica">Ejemplo de respuesta:</string>
+    <string name="nohintsavailable">No hay pistas disponibles.</string>
+    <string name="firstLevel">Nivel Básico - Principiante</string>
+    <string name="secondLevel">Nivel intermedio</string>
+    <string name="thirdLevel">Nivel Avanzado (Sin pistas)</string>
+    <string name="beginInterm">Principiante + Intermedio</string>
+    <string name="allLevels">Todas las preguntas</string>
+    <string name="coin">Coins: %1$d</string>
+    <string name="a_guy_sitting_in_a_big_interrogation_mark">Un tipo sentado en un gran signo de interrogación..</string>
+    <string name="configuration">Ajustes</string>
+    <string name="time_between_each_question_automatic">Tiempo entre cada pregunta (Automatización):</string>
+    <string name="all_questions">Todas las preguntas</string>
+    <string name="beginner_intermediate">Principiante + Intermedio</string>
+    <string name="padr_o_9_segundos">Predeterminado: 9 segundos</string>
+    <string name="advanced">Avanzado:</string>
+    <string name="beginner">Principiante:</string>
+    <string name="default_9_seconds">Predeterminado: 9 segundos</string>
+    <string name="intermediate">Intermedio:</string>
+    <string name="aplly">Aplicar configuraciones</string>
+
+</resources>

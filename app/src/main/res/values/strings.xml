@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name" translatable="false">Answering</string>
+    <string name="app_name" translatable="false">Answering English</string>
     <string name="admob_app_id" translatable="false">ca-app-pub-2884509228034182~3717396924</string>
     <string name="interstitial_id" translatable="false">ca-app-pub-2884509228034182/7941879672</string>
 
@@ -18,6 +18,15 @@
     <string name="coin">Coins: %1$d</string>
     <string name="a_guy_sitting_in_a_big_interrogation_mark">A guy sitting in a big interrogation mark.</string>
     <string name="configuration">Settings</string>
+    <string name="time_between_each_question_automatic">Time between each question (Automatic):</string>
+    <string name="all_questions">All questions</string>
+    <string name="beginner_intermediate">Beginner + Intermediate</string>
+    <string name="padr_o_9_segundos">Default: 9 seconds</string>
+    <string name="advanced">Advanced:</string>
+    <string name="beginner">Beginner:</string>
+    <string name="default_9_seconds">Default: 9 seconds</string>
+    <string name="intermediate">Intermediate:</string>
+    <string name="aplly">Aplly</string>
 
     <string name="question1" translatable="false">How old are you?</string>
     <string name="hint1" translatable="false">-I\'m … years old</string>
@@ -269,6 +278,7 @@
     <string name="hadvanc39" translatable="false">****</string>
     <string name="qadvanc40" translatable="false">If you could un-invent one thing, what would it be?</string>
     <string name="hadvanc40" translatable="false">****</string>
+
 
 
 </resources>

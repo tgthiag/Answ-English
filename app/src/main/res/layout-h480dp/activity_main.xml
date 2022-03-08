@@ -5,12 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    tools:context=".MainActivity">
+    tools:context="AnsweringAPP.activities.MainActivity">
 
     <TextView
         android:id="@+id/btSettings"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:translationZ="90dp"
         android:layout_marginTop="100dp"
         android:clickable="true"
         android:focusable="true"
@@ -29,9 +30,11 @@
     <ImageView
         android:id="@+id/logo"
         android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:layout_marginTop="5dp"
+        android:layout_height="130dp"
         android:src="@drawable/logo"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:scaleType="fitXY"
         android:contentDescription="@string/a_guy_sitting_in_a_big_interrogation_mark"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -50,7 +53,7 @@
             android:text="@string/app_name"
             android:textColor="@color/white"
             android:gravity="center"
-            android:textSize="42sp"
+            android:textSize="34sp"
             android:textStyle="bold"
             />
         <TextView
@@ -63,7 +66,7 @@
 
             />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/bt_aboutYou"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -73,7 +76,7 @@
             android:text="@string/firstLevel"
             android:textAllCaps="false"
             style="@style/bt_inicial"/>
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/bt_everyDayThings"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -84,7 +87,7 @@
             style="@style/bt_inicial"
             android:textAllCaps="false"
             />
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/bt_jobInterview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -95,7 +98,7 @@
             android:text="@string/thirdLevel"
             android:textAllCaps="false"
             />
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/bt_BegInterm"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -106,7 +109,7 @@
             android:text="@string/beginInterm"
             android:textAllCaps="false"
             />
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/allQuestions"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

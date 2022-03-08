@@ -15,4 +15,13 @@
     <string name="beginInterm">Básico + Intermediário</string>
     <string name="a_guy_sitting_in_a_big_interrogation_mark">Um boneco sentado em um grande ponto de interrogação.</string>
     <string name="configuration">"Configurações "</string>
+    <string name="time_between_each_question_automatic">Tempo entre cada pergunta (Automatização)</string>
+    <string name="all_questions">Todas as perguntas</string>
+    <string name="padr_o_9_segundos">Padrão: 9 segundos</string>
+    <string name="beginner_intermediate">Basico + Intermediário</string>
+    <string name="advanced">Avançado</string>
+    <string name="beginner">Iniciante</string>
+    <string name="default_9_seconds">Padrão: 9 segundos</string>
+    <string name="intermediate">Intermediário</string>
+    <string name="aplly">Aplicar configurações</string>
 </resources>

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    tools:context=".MainActivity">
+    tools:context="AnsweringAPP.activities.MainActivity">
 
     <TextView
         android:id="@+id/btSettings"
@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
         android:clickable="true"
+        android:translationZ="90dp"
         android:focusable="true"
         android:gravity="end"
         android:padding="5dp"
@@ -61,7 +62,7 @@
             android:textColor="@color/white"
             />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/bt_aboutYou"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -72,7 +73,7 @@
             android:text="@string/firstLevel"
             android:textAllCaps="false"
             style="@style/bt_inicial"/>
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/bt_everyDayThings"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -84,7 +85,7 @@
             style="@style/bt_inicial"
             android:textAllCaps="false"
             />
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/bt_jobInterview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -96,7 +97,7 @@
             android:text="@string/thirdLevel"
             android:textAllCaps="false"
             />
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/bt_BegInterm"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -108,7 +109,7 @@
             android:text="@string/beginInterm"
             android:textAllCaps="false"
             />
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/allQuestions"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

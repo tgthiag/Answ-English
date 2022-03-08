@@ -7,7 +7,8 @@
     android:orientation="vertical"
     android:background="@drawable/background"
     android:gravity="center"
-    tools:context=".activities.beginner">
+    android:keepScreenOn="true"
+    tools:context="AnsweringAPP.activities.beginner">
 
     <com.google.android.gms.ads.AdView
         android:id="@+id/adView"
@@ -15,7 +16,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         ads:adSize="BANNER"
-        ads:adUnitId="ca-app-pub-3940256099942544/6300978111"/>
+        ads:adUnitId="ca-app-pub-2884509228034182/8623568236"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -107,7 +108,7 @@
             android:layout_width="30dp"
             android:layout_height="wrap_content"
             android:layout_gravity="start"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="15dp"
             android:layout_weight="1"
             android:text="@string/hidehints" />
         <Button

@@ -24,5 +24,7 @@
     <string name="default_9_seconds">Predeterminado: 9 segundos</string>
     <string name="intermediate">Intermedio:</string>
     <string name="aplly">Aplicar configuraciones</string>
+    <string name="coins_out">las monedas terminaron, mira un video para ganar más</string>
+    <string name="auto_start">Automatización iniciada, por favor espere...</string>
 
 </resources>

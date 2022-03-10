@@ -27,6 +27,10 @@
     <string name="default_9_seconds">Default: 9 seconds</string>
     <string name="intermediate">Intermediate:</string>
     <string name="aplly">Aplly</string>
+    <string name="coins_out">You are out of coins, watch an ad to earn more</string>
+    <string name="auto_start">Automation started, please wait…</string>
+
+
 
     <string name="question1" translatable="false">How old are you?</string>
     <string name="hint1" translatable="false">-I\'m … years old</string>

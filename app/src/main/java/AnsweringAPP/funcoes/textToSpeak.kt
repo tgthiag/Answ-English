@@ -84,7 +84,7 @@ object textToSpeak{
 
                     //=======INICIANDO AUTOMATIZAÇÃO=========
                     loopOn = true
-                    Toast.makeText(ctx,"Automatização iniciada, aguarde...",Toast.LENGTH_LONG).show()
+                    Toast.makeText(ctx,ctx.getString(R.string.auto_start),Toast.LENGTH_LONG).show()
                     Toast.makeText(ctx,"1 moeda utilizada, você tem agora $update moedas.",Toast.LENGTH_LONG).show()
                     var job: Job? = null
                     job = GlobalScope.launch(main) { // launch a new coroutine in background and continue
@@ -104,8 +104,8 @@ object textToSpeak{
                             continue
                         }
                     }
-                }else{loopOn = false; Toast.makeText(ctx,"Automatização finalizada",Toast.LENGTH_SHORT).show();job?.cancel()}
-            }else{Toast.makeText(ctx,"Suas moedas acabaram! Assista a um vídeo para ganhar mais.",Toast.LENGTH_SHORT).show()}
+                }else{loopOn = false; Toast.makeText(ctx,"Automation finished.",Toast.LENGTH_SHORT).show();job?.cancel()}
+            }else{Toast.makeText(ctx,ctx.getString(R.string.coins_out),Toast.LENGTH_SHORT).show()}
         }
 
 

@@ -24,5 +24,7 @@
     <string name="default_9_seconds">Standard: 9 Sekunden</string>
     <string name="intermediate">mittlere</string>
     <string name="aplly">Anwenden</string>
+    <string name="coins_out">Münzen beendet, sehen Sie sich eine Anzeige an, um mehr zu verdienen</string>
+    <string name="auto_start">Automatisierung gestartet, bitte warten…</string>
 
 </resources>

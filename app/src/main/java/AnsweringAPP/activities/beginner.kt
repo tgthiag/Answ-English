@@ -9,12 +9,21 @@ import AnsweringAPP.dados.*
 import com.AnsweringAPP.databinding.BeginnerBinding
 import AnsweringAPP.funcoes.rewardedAd
 import AnsweringAPP.funcoes.textToSpeak
+import android.content.ContentValues.TAG
+import android.util.Log
+import android.widget.Toast
+import com.AnsweringAPP.R
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdView
 import com.google.android.gms.ads.LoadAdError
 import com.google.android.gms.ads.MobileAds
 import com.google.android.gms.ads.interstitial.InterstitialAd
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
+import com.google.mlkit.common.model.DownloadConditions
+import com.google.mlkit.nl.translate.TranslateLanguage
+import com.google.mlkit.nl.translate.Translation
+import com.google.mlkit.nl.translate.TranslatorOptions
+import java.util.*
 
 private lateinit var binding: BeginnerBinding
 class beginner : AppCompatActivity() {
@@ -26,6 +35,41 @@ class beginner : AppCompatActivity() {
         binding = BeginnerBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportActionBar?.hide()
+
+        ///translate options
+        var currentLanguage: String = Locale.getDefault().language
+        var tradOpt = TranslatorOptions.Builder()
+            .setSourceLanguage(TranslateLanguage.ENGLISH)
+            .setTargetLanguage(TranslateLanguage.fromLanguageTag(currentLanguage)!!)
+            .build()
+        val traduzir_pergunta = Translation.getClient(tradOpt)
+        var conditions = DownloadConditions.Builder()
+            .build()
+
+
+        traduzir_pergunta.downloadModelIfNeeded(conditions)
+            .addOnSuccessListener {
+                // Model downloaded successfully. Okay to start translating.
+            }
+            .addOnFailureListener { exception ->
+                // Model couldn’t be downloaded or other internal error.
+            }
+        binding.cxTexto.setOnClickListener {
+        traduzir_pergunta.translate(binding.cxTexto.text.toString())
+            .addOnSuccessListener { binding.cxTradQ.text = it }
+            .addOnFailureListener{Toast.makeText(this,"Wait the download.",Toast.LENGTH_LONG).show()}
+        }
+        binding.cxHint.setOnClickListener {
+            traduzir_pergunta.translate(binding.cxHint.text.toString())
+                .addOnSuccessListener {
+                    if (binding.cxHint.text != "****") {
+                        binding.cxTradH.text = it
+                    }else{binding.cxTradH.text = this.getString(R.string.nohintsavailable)}
+                }
+                .addOnFailureListener{Toast.makeText(this,"Wait the download.",Toast.LENGTH_LONG).show()}
+        }
+
+
 
         //==========DATABASE-MYSQL==============
         val mainClass = this
@@ -51,6 +95,7 @@ class beginner : AppCompatActivity() {
         binding.btReward.setOnClickListener {
             rewardedAd().showAd(this,db)
             loadCoins(this,db)
+
         }
 
 
@@ -97,7 +142,9 @@ class beginner : AppCompatActivity() {
 
         //==========INICIANDO FUNÇÕES DA TELA DE PERGUNTAS===============
         textToSpeak.TTS(this,selectedLevel, binding.cxTexto, binding.cxHint,applicationContext, binding.playquestion,
-            binding.playhint, binding.checkDicas, binding.btFront, binding.btBack, binding.btAutomatic,db,timer)
+            binding.playhint, binding.checkDicas, binding.btFront, binding.btBack, binding.btAutomatic,db,timer,
+            binding.cxTradQ,
+            binding.cxTradH)
 
     }
     public override fun onPause() {

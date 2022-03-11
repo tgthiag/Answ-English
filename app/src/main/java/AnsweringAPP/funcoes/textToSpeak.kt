@@ -15,7 +15,7 @@ import kotlin.coroutines.CoroutineContext
 
 object textToSpeak{
 
-    fun TTS(ctx : Context,selectedLevel : Array<List<String>>, cxTexto : TextView, cxHint : TextView, applicationContext : Context, pq : TextView, ph : TextView,check : CheckBox, btf: ImageButton, btb: ImageButton, btAuto : Button,db : SQLiteDatabase,question_delay:Long){
+    fun TTS(ctx : Context,selectedLevel : Array<List<String>>, cxTexto : TextView, cxHint : TextView, applicationContext : Context, pq : TextView, ph : TextView,check : CheckBox, btf: ImageButton, btb: ImageButton, btAuto : Button,db : SQLiteDatabase,question_delay:Long,tradQ : TextView, tradH : TextView){
 
 
         selectedLevel.shuffle()
@@ -26,12 +26,16 @@ object textToSpeak{
             cxTexto, cxHint, selectedLevel, check,posicao)
 
         btf.setOnClickListener {
+            tradQ.text = ""
+            tradH.text = ""
             if (posicao < selectedLevel.size -1){ posicao = posicao + 1} else{ posicao = 0}
             Question().click(applicationContext,
                 cxTexto, cxHint, selectedLevel, check,posicao)
         }
 
         btb.setOnClickListener {
+            tradQ.text = ""
+            tradH.text = ""
             if (posicao != 0){ posicao = posicao - 1} else{ posicao = 0}
             Question().click(applicationContext,
                 cxTexto,
@@ -101,6 +105,8 @@ object textToSpeak{
                             )
                             delay(question_delay)
                             // non-blocking delay for 1 second (default time unit is ms)
+                            tradQ.text = ""
+                            tradH.text = ""
                             continue
                         }
                     }

@@ -70,6 +70,14 @@
         android:focusable="true"
         android:layout_height="wrap_content"
         android:gravity="center"/>
+        <TextView
+            android:id="@+id/cxTradQ"
+            android:layout_width="match_parent"
+            android:layout_marginTop="0dp"
+            android:textColor="@color/gray"
+            android:textSize="12sp"
+            android:layout_height="wrap_content"
+            android:gravity="center"/>
 
         <TextView
             android:id="@+id/playhint"
@@ -78,7 +86,7 @@
             android:clickable="true"
             android:focusable="true"
             android:textColor="@color/white"
-            android:layout_marginTop="28dp"
+            android:layout_marginTop="20dp"
             android:text="@string/dica"
             android:gravity="center"
             app:drawableBottomCompat="@drawable/playhint" />
@@ -89,6 +97,14 @@
             android:clickable="true"
             android:focusable="true"
             android:textColor="@color/white"
+            android:layout_height="wrap_content"
+            android:gravity="center"/>
+        <TextView
+            android:id="@+id/cxTradH"
+            android:layout_width="match_parent"
+            android:layout_marginTop="0dp"
+            android:textColor="@color/gray"
+            android:textSize="12sp"
             android:layout_height="wrap_content"
             android:gravity="center"/>
     </LinearLayout>

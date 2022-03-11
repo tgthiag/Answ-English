@@ -39,7 +39,7 @@
             android:textColor="@color/white"
             android:layout_gravity="center"
             android:padding="13dp"
-            android:textSize="14dp"
+            android:textSize="14sp"
             style="@style/ContainerComponents"/>
     </LinearLayout>
 
@@ -73,6 +73,14 @@
             android:gravity="center"
             android:textColor="@color/white"
             android:textSize="20sp" />
+        <TextView
+            android:id="@+id/cxTradQ"
+            android:layout_width="match_parent"
+            android:layout_marginTop="0dp"
+            android:textColor="@color/gray"
+            android:textSize="12sp"
+            android:layout_height="wrap_content"
+            android:gravity="center"/>
 
         <TextView
             android:id="@+id/playhint"
@@ -84,7 +92,7 @@
             android:gravity="center"
             android:text="@string/dica"
             android:textColor="@color/white"
-            app:drawableBottomCompat="@drawable/playhint" />
+            android:drawableBottom="@drawable/playhint" />
 
         <TextView
             android:id="@+id/cxHint"
@@ -95,6 +103,14 @@
             android:gravity="center"
             android:textColor="@color/white"
             android:textSize="20sp" />
+        <TextView
+            android:id="@+id/cxTradH"
+            android:layout_width="match_parent"
+            android:layout_marginTop="0dp"
+            android:textColor="@color/gray"
+            android:textSize="12sp"
+            android:layout_height="wrap_content"
+            android:gravity="center"/>
     </LinearLayout>
 
     <LinearLayout

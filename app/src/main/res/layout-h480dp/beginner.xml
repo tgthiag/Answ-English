@@ -70,11 +70,19 @@
         android:layout_width="match_parent"
         android:layout_marginTop="0dp"
         android:textColor="@color/white"
-        android:textSize="18sp"
+        android:textSize="22sp"
         android:clickable="true"
         android:focusable="true"
         android:layout_height="wrap_content"
         android:gravity="center"/>
+        <TextView
+            android:id="@+id/cxTradQ"
+            android:layout_width="match_parent"
+            android:layout_marginTop="0dp"
+            android:textColor="@color/gray"
+            android:textSize="12sp"
+            android:layout_height="wrap_content"
+            android:gravity="center"/>
 
         <TextView
             android:id="@+id/playhint"
@@ -90,10 +98,18 @@
         <TextView
             android:id="@+id/cxHint"
             android:layout_width="match_parent"
-            android:textSize="18sp"
+            android:textSize="22sp"
             android:clickable="true"
             android:focusable="true"
             android:textColor="@color/white"
+            android:layout_height="wrap_content"
+            android:gravity="center"/>
+        <TextView
+            android:id="@+id/cxTradH"
+            android:layout_width="match_parent"
+            android:layout_marginTop="0dp"
+            android:textColor="@color/gray"
+            android:textSize="12sp"
             android:layout_height="wrap_content"
             android:gravity="center"/>
     </LinearLayout>

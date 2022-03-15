@@ -29,7 +29,11 @@
     <string name="aplly">Aplly</string>
     <string name="coins_out">You are out of coins, watch an ad to earn more</string>
     <string name="auto_start">Automation started, please wait…</string>
-
+    <string name="auto_ligar">Start</string>
+    <string name="auto_desligar">Stop</string>
+    <string name="share">Share</string>
+    <string name="shareMessage">Hey! Have you tried this app? It\'s amazing for english practice!</string>
+    <string name="shareFriends">Share with your friends!</string>
 
 
     <string name="question1" translatable="false">How old are you?</string>

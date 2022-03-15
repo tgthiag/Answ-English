@@ -41,9 +41,10 @@
             style="@style/ContainerComponents"/>
     </LinearLayout>
 
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="360dp"
         android:orientation="vertical"
         android:layout_margin="10dp"
         android:background="@drawable/container_components">
@@ -65,7 +66,7 @@
         android:layout_width="match_parent"
         android:layout_marginTop="0dp"
         android:textColor="@color/white"
-        android:textSize="24sp"
+        android:textSize="22sp"
         android:clickable="true"
         android:focusable="true"
         android:layout_height="wrap_content"
@@ -86,14 +87,14 @@
             android:clickable="true"
             android:focusable="true"
             android:textColor="@color/white"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="12dp"
             android:text="@string/dica"
             android:gravity="center"
             app:drawableBottomCompat="@drawable/playhint" />
         <TextView
             android:id="@+id/cxHint"
             android:layout_width="match_parent"
-            android:textSize="24sp"
+            android:textSize="22sp"
             android:clickable="true"
             android:focusable="true"
             android:textColor="@color/white"
@@ -136,17 +137,15 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="199dp"
+        android:layout_height="wrap_content"
         android:weightSum="2">
 
         <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/bt_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="30dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginStart="60dp"
+            android:layout_marginEnd="15dp"
             android:layout_weight="1"
             android:background="@drawable/arrow_leftt"
             app:icon="@drawable/arrow_leftt" />
@@ -156,10 +155,8 @@
             android:layout_width="wrap_content"
             android:background="@drawable/arrow_right"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginEnd="30dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="60dp"
             android:layout_weight="1"
             app:icon="@drawable/arrow_right" />
 
@@ -173,7 +170,8 @@
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
            ads:adSize="BANNER"
-           ads:adUnitId="ca-app-pub-2884509228034182/8623568236"/>
+           android:layout_gravity="bottom"
+           ads:adUnitId="ca-app-pub-2884509228034182/9207595979"/>
 
 
 </LinearLayout>

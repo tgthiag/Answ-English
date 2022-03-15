@@ -26,4 +26,9 @@
     <string name="aplly">Aplicar configurações</string>
     <string name="coins_out">Suas moedas acabaram, assista um vídeo para ganhar mais.</string>
     <string name="auto_start">Automatização iniciada, aguarde...</string>
+    <string name="auto_ligar">Iniciar</string>
+    <string name="auto_desligar">Parar</string>
+    <string name="share">Compartilhar</string>
+    <string name="shareMessage">Ei! Já baixou esse app? É muito bom pra praticar inglês!</string>
+    <string name="shareFriends">Compartilhe com seus amigos!</string>
 </resources>

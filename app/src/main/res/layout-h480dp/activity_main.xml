@@ -8,6 +8,23 @@
     tools:context="AnsweringAPP.activities.MainActivity">
 
     <TextView
+        android:id="@+id/btShare"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="end"
+        android:translationZ="90dp"
+        android:padding="5dp"
+        android:text="@string/share"
+        android:textColor="@color/white"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:drawableEndCompat="@drawable/share"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
         android:id="@+id/btSettings"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

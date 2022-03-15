@@ -26,5 +26,10 @@
     <string name="aplly">Aplicar configuraciones</string>
     <string name="coins_out">las monedas terminaron, mira un video para ganar más</string>
     <string name="auto_start">Automatización iniciada, por favor espere...</string>
+    <string name="auto_ligar">Comenzar</string>
+    <string name="auto_desligar">Detener</string>
+    <string name="share">Compartir</string>
+    <string name="shareMessage">¡Oye! ¿Has descargado esta aplicación? ¡Es increíble para practicar inglés!</string>
+    <string name="shareFriends">¡Comparte con tus amigos!</string>
 
 </resources>

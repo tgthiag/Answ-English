@@ -26,5 +26,10 @@
     <string name="aplly">Anwenden</string>
     <string name="coins_out">Münzen beendet, sehen Sie sich eine Anzeige an, um mehr zu verdienen</string>
     <string name="auto_start">Automatisierung gestartet, bitte warten…</string>
+    <string name="auto_ligar">Start</string>
+    <string name="auto_desligar">Stoppen</string>
+    <string name="share">Teilen</string>
+    <string name="shareMessage">Hey! Haben Sie diese App heruntergeladen? Es ist erstaunlich für Englisch üben!</string>
+    <string name="shareFriends">Teile mit deinen Freunden!</string>
 
 </resources>

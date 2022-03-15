@@ -6,6 +6,9 @@ import androidx.appcompat.app.AppCompatActivity
 import AnsweringAPP.activities.SettingsScreen
 import AnsweringAPP.activities.beginner
 import AnsweringAPP.dados.localSqlDatabase
+import AnsweringAPP.funcoes.Translate
+import androidx.core.app.ShareCompat
+import com.AnsweringAPP.R
 
 
 import com.AnsweringAPP.databinding.ActivityMainBinding
@@ -18,6 +21,8 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportActionBar?.hide()
+
+        Translate().download(this)
 
         //==========DATABASE-MYSQL==============
         val mainClass = this
@@ -53,6 +58,13 @@ class MainActivity : AppCompatActivity() {
         }
         binding.btSettings.setOnClickListener {
             startActivity(Intent(this,SettingsScreen::class.java))
+        }
+        binding.btShare.setOnClickListener {
+            ShareCompat.IntentBuilder(this)
+                .setType("text/plain")
+                .setChooserTitle(R.string.shareFriends)
+                .setText(getString(R.string.shareMessage)+" https://play.google.com/store/apps/details?id=" + this.getPackageName())
+                .startChooser();
         }
     }
 }

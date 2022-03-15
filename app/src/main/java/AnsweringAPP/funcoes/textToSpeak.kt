@@ -88,7 +88,9 @@ object textToSpeak{
 
                     //=======INICIANDO AUTOMATIZAÇÃO=========
                     loopOn = true
-                    Toast.makeText(ctx,ctx.getString(R.string.auto_start),Toast.LENGTH_LONG).show()
+                    popup().showCustomDialog(ctx, ctx.getString(R.string.auto_start))
+
+                    //Toast.makeText(ctx,ctx.getString(R.string.auto_start),Toast.LENGTH_LONG).show()
                     Toast.makeText(ctx,"1 moeda utilizada, você tem agora $update moedas.",Toast.LENGTH_LONG).show()
                     var job: Job? = null
                     job = GlobalScope.launch(main) { // launch a new coroutine in background and continue

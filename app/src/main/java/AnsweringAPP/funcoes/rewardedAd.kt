@@ -28,7 +28,7 @@ class rewardedAd {
 
         RewardedAd.load(
             ctx,
-            "ca-app-pub-3940256099942544/5224354917",
+            "ca-app-pub-2884509228034182/7941879672",
             adRequest,
             object : RewardedAdLoadCallback() {
                 override fun onAdFailedToLoad(adError: LoadAdError) {

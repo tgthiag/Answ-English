@@ -12,7 +12,7 @@
     <string name="thirdLevel">Nivel Avanzado (Sin pistas)</string>
     <string name="beginInterm">Principiante + Intermedio</string>
     <string name="allLevels">Todas las preguntas</string>
-    <string name="coin">Coins: %1$d</string>
+    <string name="coin">Monedas</string>
     <string name="a_guy_sitting_in_a_big_interrogation_mark">Un tipo sentado en un gran signo de interrogación..</string>
     <string name="configuration">Ajustes</string>
     <string name="time_between_each_question_automatic">Tiempo entre cada pregunta (Automatización):</string>

@@ -12,7 +12,7 @@
     <string name="thirdLevel">Fortgeschrittene Stufe (keine Hinweise)</string>
     <string name="beginInterm">Grundstufe + Mittelstufe</string>
     <string name="allLevels">Alle Zufallsfragen</string>
-    <string name="coin">Coins: %1$d</string>
+    <string name="coin">Münzen</string>
     <string name="a_guy_sitting_in_a_big_interrogation_mark">Ein Typ, der in einem großen Verhörraum sitzt.</string>
     <string name="configuration">App Einstellungen</string>
     <string name="time_between_each_question_automatic">Zeit zwischen jeder Frage (Automatisch):</string>

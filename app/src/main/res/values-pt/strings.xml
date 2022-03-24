@@ -11,7 +11,7 @@
     <string name="allLevels">Todas as Perguntas</string>
     <string name="automatizar">Automatizar</string>
     <string name="click_hereADS">Clique aqui e assista um vídeo para ganhar moedas</string>
-    <string name="coin">Moedas: %1$d</string>
+    <string name="coin">Moedas:</string>
     <string name="beginInterm">Básico + Intermediário</string>
     <string name="a_guy_sitting_in_a_big_interrogation_mark">Um boneco sentado em um grande ponto de interrogação.</string>
     <string name="configuration">"Configurações "</string>

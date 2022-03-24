@@ -1,17 +1,16 @@
 package AnsweringAPP.activities
 
+
+import AnsweringAPP.dados.localSqlDatabase
+import AnsweringAPP.funcoes.Translate
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import AnsweringAPP.activities.SettingsScreen
-import AnsweringAPP.activities.beginner
-import AnsweringAPP.dados.localSqlDatabase
-import AnsweringAPP.funcoes.Translate
 import androidx.core.app.ShareCompat
 import com.AnsweringAPP.R
-
-
 import com.AnsweringAPP.databinding.ActivityMainBinding
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.MobileAds
 
 
 private lateinit var binding : ActivityMainBinding
@@ -29,6 +28,9 @@ class MainActivity : AppCompatActivity() {
         val classdb = localSqlDatabase(mainClass)
         val db = classdb.writableDatabase
         classdb.initializeRow()
+
+        MobileAds.initialize(this) {}
+        loadBanner()
 
 
         binding.btAboutYou.setOnClickListener {
@@ -66,5 +68,9 @@ class MainActivity : AppCompatActivity() {
                 .setText(getString(R.string.shareMessage)+" https://play.google.com/store/apps/details?id=" + this.getPackageName())
                 .startChooser();
         }
+    }
+    private fun loadBanner() {
+        val adRequest = AdRequest.Builder().build()
+        binding.adView?.loadAd(adRequest)
     }
 }

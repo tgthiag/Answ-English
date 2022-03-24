@@ -28,15 +28,13 @@ class beginner : AppCompatActivity() {
         setContentView(binding.root)
         supportActionBar?.hide()
 
-
-
-        binding.cxTexto.setOnClickListener {
-            Translate().question(binding.cxTexto,binding.cxTradQ,this)
-        }
-        binding.cxHint.setOnClickListener {
-            Translate().hint(binding.cxHint,binding.cxTradH,this)
-        }
-
+        //Traduções eram clicando nos botões, agora são automáticas
+//        binding.cxTexto.setOnClickListener {
+//            Translate().question(binding.cxTexto,binding.cxTradQ,this)
+//        }
+//        binding.cxHint.setOnClickListener {
+//            Translate().hint(binding.cxHint,binding.cxTradH,this)
+//        }
 
         //==========DATABASE-MYSQL==============
         val mainClass = this

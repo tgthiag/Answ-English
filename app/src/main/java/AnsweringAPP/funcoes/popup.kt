@@ -5,9 +5,7 @@ import android.content.Context
 import android.content.DialogInterface
 import android.view.LayoutInflater
 import android.view.View
-import android.widget.Button
 import android.widget.TextView
-import androidx.core.view.isGone
 import com.AnsweringAPP.R
 
 class popup {
@@ -17,6 +15,7 @@ class popup {
         val dialogView: View = inflater.inflate(R.layout.popup, null)
         val header_txt = dialogView.findViewById<TextView>(R.id.header)
         header_txt.text = str
+
 //        val details_txt = dialogView.findViewById<TextView>(R.id.details)
 //        val custom_button: Button = dialogView.findViewById(R.id.customBtn)
 //        custom_button.setOnClickListener {

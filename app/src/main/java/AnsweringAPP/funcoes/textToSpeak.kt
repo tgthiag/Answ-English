@@ -31,6 +31,8 @@ object textToSpeak{
             if (posicao < selectedLevel.size -1){ posicao = posicao + 1} else{ posicao = 0}
             Question().click(applicationContext,
                 cxTexto, cxHint, selectedLevel, check,posicao)
+            Translate().question(cxTexto, tradQ,ctx)
+            Translate().hint(cxHint,tradH,ctx)
         }
 
         btb.setOnClickListener {
@@ -40,6 +42,8 @@ object textToSpeak{
             Question().click(applicationContext,
                 cxTexto,
                 cxHint, selectedLevel, check,posicao)
+            Translate().question(cxTexto, tradQ,ctx)
+            Translate().hint(cxHint,tradH,ctx)
         }
 
         pq.setOnClickListener {
@@ -91,7 +95,7 @@ object textToSpeak{
                     popup().showCustomDialog(ctx, ctx.getString(R.string.auto_start))
 
                     //Toast.makeText(ctx,ctx.getString(R.string.auto_start),Toast.LENGTH_LONG).show()
-                    Toast.makeText(ctx,"1 moeda utilizada, você tem agora $update moedas.",Toast.LENGTH_LONG).show()
+                    Toast.makeText(ctx,ctx.getString(R.string.coin) + ": -1.",Toast.LENGTH_LONG).show()
                     var job: Job? = null
                     job = GlobalScope.launch(main) { // launch a new coroutine in background and continue
                         while (loopOn == true) {
@@ -105,6 +109,8 @@ object textToSpeak{
                                 ctx,
                                 cxTexto, cxHint, selectedLevel, check, posicao
                             )
+                            Translate().question(cxTexto, tradQ,ctx)
+                            Translate().hint(cxHint,tradH,ctx)
                             delay(question_delay)
                             // non-blocking delay for 1 second (default time unit is ms)
                             tradQ.text = ""

@@ -11,6 +11,7 @@ import AnsweringAPP.activities.beginner
 import AnsweringAPP.dados.COINS
 import AnsweringAPP.dados.INTERSTITIAL
 import AnsweringAPP.dados.TABLE_NAME
+import com.AnsweringAPP.R
 import com.google.android.gms.ads.*
 import com.google.android.gms.ads.rewarded.RewardItem
 import com.google.android.gms.ads.rewarded.RewardedAd
@@ -79,13 +80,13 @@ fun  showAd(ctx : Activity, db : SQLiteDatabase) {
 
                 cv.put(COINS, update)
                 db.update(TABLE_NAME, cv,null,null)
-                Toast.makeText(ctx,"Você ganhou duas moedas e tem agora $update moedas.",Toast.LENGTH_SHORT).show()
+                Toast.makeText(ctx,ctx.getString(R.string.coin) + ": +2",Toast.LENGTH_SHORT).show()
                 beginner().loadCoins(ctx,db)
             }
             onUserEarnedReward(it)
         })
     } else {
-        Toast.makeText(ctx,"Wait, or verify your internet connection.",Toast.LENGTH_SHORT).show()
+        Toast.makeText(ctx,"Wait a little, or verify your internet connection.",Toast.LENGTH_SHORT).show()
         Log.d(TAG, "The rewarded ad wasn't ready yet.")
     }
 }

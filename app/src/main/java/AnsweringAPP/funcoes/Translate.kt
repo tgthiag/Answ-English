@@ -35,10 +35,7 @@ class Translate() {
             .addOnSuccessListener {
                 cxQt.text = it
             }
-            .addOnFailureListener {
-                Toast.makeText(ctx, "Getting your translation pack.", Toast.LENGTH_LONG)
-                    .show()
-            }
+            .addOnFailureListener {}
     }
 
 
@@ -49,7 +46,7 @@ class Translate() {
                     cxHT.text = it
                 }else{cxHT.text = ctx.getString(R.string.nohintsavailable)}
             }
-            .addOnFailureListener{Toast.makeText(ctx,"Getting your translation pack.",Toast.LENGTH_LONG).show()}
+            .addOnFailureListener{}
     }
 
 }

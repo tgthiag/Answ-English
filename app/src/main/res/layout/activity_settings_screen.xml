@@ -24,6 +24,7 @@
         />
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
@@ -50,8 +51,8 @@
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
             android:background="@color/whiteTr"
-            android:hint="@string/padr_o_9_segundos"
             android:gravity="center"
+            android:hint="@string/padr_o_9_segundos"
             android:inputType="number"
             android:textColor="@color/black"
             android:textSize="16sp"
@@ -75,8 +76,8 @@
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
             android:background="@color/whiteTr"
-            android:hint="@string/padr_o_9_segundos"
             android:gravity="center"
+            android:hint="@string/padr_o_9_segundos"
             android:inputType="number"
             android:textColor="@color/black"
             android:textSize="16sp"
@@ -100,8 +101,8 @@
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
             android:background="@color/whiteTr"
-            android:hint="@string/padr_o_9_segundos"
             android:gravity="center"
+            android:hint="@string/padr_o_9_segundos"
             android:inputType="number"
             android:textColor="@color/black"
             android:textSize="16sp"
@@ -125,24 +126,24 @@
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
             android:background="@color/whiteTr"
-            android:hint="@string/padr_o_9_segundos"
             android:gravity="center"
+            android:hint="@string/padr_o_9_segundos"
             android:inputType="number"
             android:textColor="@color/black"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/time_beginner" />
 
-<!--        <CheckBox-->
-<!--            android:id="@+id/checkBox"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="Keep playing on background?"-->
-<!--            android:textColor="@color/white"-->
-<!--            android:textSize="16sp"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toTopOf="parent" />-->
+        <!--        <CheckBox-->
+        <!--            android:id="@+id/checkBox"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:text="Keep playing on background?"-->
+        <!--            android:textColor="@color/white"-->
+        <!--            android:textSize="16sp"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:layout_constraintTop_toTopOf="parent" />-->
 
         <TextView
             android:id="@+id/textView"
@@ -156,6 +157,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
         <TextView
             android:id="@+id/txt_default"
             android:layout_width="match_parent"
@@ -186,8 +188,8 @@
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
             android:background="@color/whiteTr"
-            android:hint="@string/padr_o_9_segundos"
             android:gravity="center"
+            android:hint="@string/padr_o_9_segundos"
             android:inputType="number"
             android:textColor="@color/black"
             android:textSize="16sp"
@@ -199,14 +201,25 @@
             style="@style/bt_inicial"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/aplly"
-            android:textColor="@color/white"
             android:layout_marginTop="15dp"
             android:paddingStart="5dp"
             android:paddingEnd="5dp"
+            android:text="@string/aplly"
+            android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/time_allquestions" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:adSize="LEADERBOARD"
+        app:adUnitId="ca-app-pub-2884509228034182/9207595979"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

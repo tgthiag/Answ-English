@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <string name="click_hereADS">सिक्के कमाने के लिए एक विज्ञापन देखें</string>
+    <string name="hidehints">उदाहरण छुपाएं</string>
+    <string name="subtitle">जवाब दो और सीखो!</string>
+    <string name="pergunta">प्रश्न:</string>
+    <string name="automatizar">स्वचालित</string>
+    <string name="dica">उत्तर उदाहरण:</string>
+    <string name="nohintsavailable">कोई उदाहरण उपलब्ध नहीं है।</string>
+    <string name="firstLevel">बुनियादी स्तर - शुरुआती</string>
+    <string name="secondLevel">मध्यवर्ती स्तर</string>
+    <string name="thirdLevel">उन्नत स्तर (कोई उदाहरण नहीं)</string>
+    <string name="beginInterm">शुरुआती + इंटरमीडिएट</string>
+    <string name="allLevels">सभी यादृच्छिक प्रश्न</string>
+    <string name="coin">सिक्के:</string>
+    <string name="a_guy_sitting_in_a_big_interrogation_mark">बड़ी पूछताछ के निशान में बैठा एक आदमी।</string>
+    <string name="configuration">समायोजन</string>
+    <string name="time_between_each_question_automatic">प्रत्येक प्रश्न के बीच का समय (स्वचालित):</string>
+    <string name="all_questions">सभी प्रश्न</string>
+    <string name="beginner_intermediate">शुरुआती + इंटरमीडिएट</string>
+    <string name="padr_o_9_segundos">डिफ़ॉल्ट: 9 सेकंड</string>
+    <string name="advanced">उन्नत:</string>
+    <string name="beginner">शुरुआती:</string>
+    <string name="default_9_seconds">डिफ़ॉल्ट: 9 सेकंड</string>
+    <string name="intermediate">मध्यम:</string>
+    <string name="aplly">लागू करना</string>
+    <string name="coins_out">आपके पास सिक्के नहीं हैं, अधिक कमाने के लिए विज्ञापन देखें</string>
+    <string name="auto_start">स्वचालन शुरू हो गया है, कृपया प्रतीक्षा करें…</string>
+    <string name="auto_ligar">शुरू</string>
+    <string name="auto_desligar">ठहराव</string>
+    <string name="share">साझा करना</string>
+    <string name="shareMessage">अरे! क्या आपने इस ऐप को आजमाया है? अंग्रेजी का अभ्यास करने के लिए यह अद्भुत है!</string>
+    <string name="shareFriends">अपने दोस्तों के साथ साझा करें!</string>
+
+</resources>

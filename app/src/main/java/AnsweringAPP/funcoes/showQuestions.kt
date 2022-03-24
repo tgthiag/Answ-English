@@ -14,6 +14,8 @@ class Question {
         mTTS = TextToSpeech(ctx,TextToSpeech.OnInitListener { status ->
             if (status != TextToSpeech.ERROR){
                 mTTS.setLanguage(Locale.US)
+                mTTS.setSpeechRate(0.7F)
+                mTTS.setPitch(0.7F)
                 mTTS.speak(hint[posDaPergunta][0],TextToSpeech.QUEUE_FLUSH,null,null)
             }
         })
@@ -24,7 +26,7 @@ class Question {
 
             cxHT.text = hint[posDaPergunta][1].toString()
         }
-        return cxQT.text.toString()
+        return cxQT.text.toString();
 
     }
 

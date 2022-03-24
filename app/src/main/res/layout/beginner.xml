@@ -13,9 +13,9 @@
     <com.google.android.gms.ads.AdView
         android:id="@+id/adView"
         xmlns:ads="http://schemas.android.com/apk/res-auto"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        ads:adSize="BANNER"
+        ads:adSize="SMART_BANNER"
         ads:adUnitId="ca-app-pub-2884509228034182/8623568236"/>
 
     <LinearLayout

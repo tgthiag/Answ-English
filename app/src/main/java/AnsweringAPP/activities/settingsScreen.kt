@@ -12,6 +12,8 @@ import com.AnsweringAPP.databinding.ActivitySettingsScreenBinding
 import com.AnsweringAPP.databinding.ActivitySettingsScreenBinding.inflate
 import com.AnsweringAPP.databinding.BeginnerBinding.inflate
 import AnsweringAPP.funcoes.settingsSQL
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.MobileAds
 
 private lateinit var binding : ActivitySettingsScreenBinding
 class SettingsScreen : AppCompatActivity() {
@@ -24,6 +26,9 @@ class SettingsScreen : AppCompatActivity() {
         val mainClass = this
         val classdb = localSqlDatabase(mainClass)
         val db = classdb.writableDatabase
+
+        MobileAds.initialize(this) {}
+        loadBanner()
 
         settingsSQL().recoverTimer(db, binding.timeBeginner, binding.timeInterm, binding.timeAdvanc, binding.timeBeginInterm,
             binding.timeAllquestions)
@@ -52,6 +57,8 @@ class SettingsScreen : AppCompatActivity() {
         cursor.close()
 
     }
-
-
+    private fun loadBanner() {
+        val adRequest = AdRequest.Builder().build()
+        binding.adView2.loadAd(adRequest)
+    }
 }

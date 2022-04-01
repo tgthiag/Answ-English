@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -10,15 +10,24 @@
     android:keepScreenOn="true"
     tools:context="AnsweringAPP.activities.beginner">
 
+    <androidx.camera.view.PreviewView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        android:id="@+id/preview"/>
+
     <com.google.android.gms.ads.AdView
         android:id="@+id/adView"
         xmlns:ads="http://schemas.android.com/apk/res-auto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         ads:adSize="BANNER"
+        ads:layout_constraintTop_toTopOf="parent"
         ads:adUnitId="ca-app-pub-2884509228034182/8623568236"/>
 
     <LinearLayout
+        android:id="@+id/linearcoins"
+        app:layout_constraintTop_toBottomOf="@id/adView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -47,6 +56,8 @@
     </LinearLayout>
 
         <androidx.core.widget.NestedScrollView
+            android:id="@+id/nested"
+            app:layout_constraintTop_toBottomOf="@id/linearcoins"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <LinearLayout
@@ -120,6 +131,8 @@
 
 
     <LinearLayout
+        android:id="@+id/linearAutomatic"
+        app:layout_constraintTop_toBottomOf="@id/nested"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:weightSum="2">
@@ -146,9 +159,11 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:weightSum="2">
+        android:weightSum="2"
+        app:layout_constraintTop_toBottomOf="@id/linearAutomatic">
 
         <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/bt_back"
@@ -159,6 +174,17 @@
             android:layout_weight="1"
             android:background="@drawable/arrow_leftt"
             app:icon="@drawable/arrow_leftt" />
+
+        <ToggleButton
+            android:id="@+id/toggle"
+            style="@style/ContainerBlack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:drawableTop="@drawable/ic_videocam"
+            android:textColor="@color/white"
+            android:textOff="@string/auto_ligar"
+            android:textOn="@string/auto_desligar" />
 
         <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/bt_front"
@@ -173,14 +199,17 @@
 
 
     </LinearLayout>
+
     <com.google.android.gms.ads.AdView
         android:id="@+id/adView2"
-        android:layout_marginTop="3dp"
-        xmlns:ads="http://schemas.android.com/apk/res-auto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        ads:adSize="BANNER"
-        ads:adUnitId="ca-app-pub-2884509228034182/9207595979"/>
+        app:adSize="BANNER"
+        app:adUnitId="ca-app-pub-2884509228034182/9207595979"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

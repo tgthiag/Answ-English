@@ -1,8 +1,10 @@
 package AnsweringAPP.funcoes
 
 import android.content.Context
+import android.telephony.TelephonyManager
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.AnsweringAPP.R
 import com.google.mlkit.common.model.DownloadConditions
 import com.google.mlkit.nl.translate.TranslateLanguage
@@ -13,11 +15,24 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import java.util.*
 
-class Translate() {
-    var currentLanguage: String = Locale.getDefault().language
+class Translate(var ctx: Context) {
+    var tm = ctx.getSystemService(AppCompatActivity.TELEPHONY_SERVICE) as TelephonyManager
+    var countryCodeValue = tm.networkCountryIso
+    fun getLanguage(country: String) : String{
+        var current : String
+        when{
+            country.contains("br") && Locale.getDefault().language.equals("en") ->  current = Locale.forLanguageTag("pt").toString()
+            country.contains("in") && Locale.getDefault().language.equals("en") ->  current = Locale.forLanguageTag("hi").toString()
+            country.contains("pk") && Locale.getDefault().language.equals("en") ->  current = Locale.forLanguageTag("ur").toString()
+                else -> current = Locale.getDefault().language
+        }
+//        Toast.makeText(ctx,current,Toast.LENGTH_LONG).show()
+        return current
+    }
+    var lang = getLanguage(countryCodeValue)
     var tradOpt = TranslatorOptions.Builder()
         .setSourceLanguage(TranslateLanguage.ENGLISH)
-        .setTargetLanguage(TranslateLanguage.fromLanguageTag(currentLanguage)!!)
+        .setTargetLanguage(TranslateLanguage.fromLanguageTag(lang).toString())
         .build()
     val traduzir_pergunta = Translation.getClient(tradOpt)
     var conditions = DownloadConditions.Builder()
@@ -49,4 +64,13 @@ class Translate() {
             .addOnFailureListener{}
     }
 
+    fun toastTrad(str: String){
+        traduzir_pergunta.translate(str)
+            .addOnSuccessListener {
+                Toast.makeText(ctx,it,Toast.LENGTH_LONG).show()
+        }
+            .addOnFailureListener {
+                Toast.makeText(ctx,str,Toast.LENGTH_LONG).show()
+            }
+    }
 }

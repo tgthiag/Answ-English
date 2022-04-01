@@ -12,15 +12,16 @@
         <entry key="..\:/DEV/Answering/app/src/main/res/drawable/container_components.xml" value="0.17407407407407408" />
         <entry key="..\:/DEV/Answering/app/src/main/res/drawable/container_txt.xml" value="0.15" />
         <entry key="..\:/DEV/Answering/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
+        <entry key="..\:/DEV/Answering/app/src/main/res/drawable/ic_videocam.xml" value="0.1165" />
         <entry key="..\:/DEV/Answering/app/src/main/res/drawable/playhint.xml" value="0.2703125" />
         <entry key="..\:/DEV/Answering/app/src/main/res/layout-h320dp/activity_main.xml" value="0.21829710144927536" />
         <entry key="..\:/DEV/Answering/app/src/main/res/layout-h360dp/activity_main.xml" value="0.12" />
-        <entry key="..\:/DEV/Answering/app/src/main/res/layout-h360dp/beginner.xml" value="0.176" />
+        <entry key="..\:/DEV/Answering/app/src/main/res/layout-h360dp/beginner.xml" value="0.13705583756345177" />
         <entry key="..\:/DEV/Answering/app/src/main/res/layout-h400dp/activity_main.xml" value="0.1640625" />
         <entry key="..\:/DEV/Answering/app/src/main/res/layout-h480dp/activity_main.xml" value="0.536" />
-        <entry key="..\:/DEV/Answering/app/src/main/res/layout-h480dp/beginner.xml" value="0.536" />
+        <entry key="..\:/DEV/Answering/app/src/main/res/layout-h480dp/beginner.xml" value="0.26459143968871596" />
         <entry key="..\:/DEV/Answering/app/src/main/res/layout-h600dp/activity_main.xml" value="0.2" />
-        <entry key="..\:/DEV/Answering/app/src/main/res/layout-h600dp/beginner.xml" value="0.1609375" />
+        <entry key="..\:/DEV/Answering/app/src/main/res/layout-h600dp/beginner.xml" value="0.152" />
         <entry key="..\:/DEV/Answering/app/src/main/res/layout-h720dp/beginner.xml" value="0.136328125" />
         <entry key="..\:/DEV/Answering/app/src/main/res/layout-h800dp/activity_main.xml" value="0.152" />
         <entry key="..\:/DEV/Answering/app/src/main/res/layout-large/activity_main.xml" value="0.4" />

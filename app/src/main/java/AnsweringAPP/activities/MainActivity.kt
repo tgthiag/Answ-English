@@ -5,23 +5,27 @@ import AnsweringAPP.dados.localSqlDatabase
 import AnsweringAPP.funcoes.Translate
 import android.content.Intent
 import android.os.Bundle
+import android.telephony.TelephonyManager
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ShareCompat
 import com.AnsweringAPP.R
 import com.AnsweringAPP.databinding.ActivityMainBinding
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.MobileAds
+import java.util.*
 
 
 private lateinit var binding : ActivityMainBinding
 class MainActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportActionBar?.hide()
 
-        Translate().download(this)
+        Translate(this).download(this)
 
         //==========DATABASE-MYSQL==============
         val mainClass = this

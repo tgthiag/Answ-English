@@ -31,8 +31,8 @@ object textToSpeak{
             if (posicao < selectedLevel.size -1){ posicao = posicao + 1} else{ posicao = 0}
             Question().click(applicationContext,
                 cxTexto, cxHint, selectedLevel, check,posicao)
-            Translate().question(cxTexto, tradQ,ctx)
-            Translate().hint(cxHint,tradH,ctx)
+            Translate(ctx).question(cxTexto, tradQ,ctx)
+            Translate(ctx).hint(cxHint,tradH,ctx)
         }
 
         btb.setOnClickListener {
@@ -42,8 +42,8 @@ object textToSpeak{
             Question().click(applicationContext,
                 cxTexto,
                 cxHint, selectedLevel, check,posicao)
-            Translate().question(cxTexto, tradQ,ctx)
-            Translate().hint(cxHint,tradH,ctx)
+            Translate(ctx).question(cxTexto, tradQ,ctx)
+            Translate(ctx).hint(cxHint,tradH,ctx)
         }
 
         pq.setOnClickListener {
@@ -109,8 +109,8 @@ object textToSpeak{
                                 ctx,
                                 cxTexto, cxHint, selectedLevel, check, posicao
                             )
-                            Translate().question(cxTexto, tradQ,ctx)
-                            Translate().hint(cxHint,tradH,ctx)
+                            Translate(ctx).question(cxTexto, tradQ,ctx)
+                            Translate(ctx).hint(cxHint,tradH,ctx)
                             delay(question_delay)
                             // non-blocking delay for 1 second (default time unit is ms)
                             tradQ.text = ""
@@ -118,7 +118,7 @@ object textToSpeak{
                             continue
                         }
                     }
-                }else{loopOn = false; Toast.makeText(ctx,"Automation finished.",Toast.LENGTH_SHORT).show();job?.cancel()}
+                }else{loopOn = false; Translate(ctx).toastTrad("Automation finished...");job?.cancel()}
             }else{Toast.makeText(ctx,ctx.getString(R.string.coins_out),Toast.LENGTH_SHORT).show()}
         }
 

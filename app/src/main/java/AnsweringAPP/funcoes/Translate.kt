@@ -2,6 +2,8 @@ package AnsweringAPP.funcoes
 
 import android.content.Context
 import android.telephony.TelephonyManager
+import android.widget.Button
+import android.widget.CheckBox
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -71,6 +73,22 @@ class Translate(var ctx: Context) {
         }
             .addOnFailureListener {
                 Toast.makeText(ctx,str,Toast.LENGTH_LONG).show()
+            }
+    }
+    fun translateButtons(btReward : Button, btAuto: Button, checkB : CheckBox, quest : TextView, example : TextView,using : TextView) {
+        if (!Locale.getDefault().language.equals("pt") && !Locale.getDefault().language.equals("hi") && !Locale.getDefault().language.equals("de")){
+            var bt1 :String = btReward.text.toString()
+            var bt2 :String = btAuto.text.toString()
+            var chk :String = checkB.text.toString()
+            var tx1 : String = quest.text.toString()
+            var tx2 : String = example.text.toString()
+            var tx3 : String = using.text.toString()
+            traduzir_pergunta.translate(bt1).addOnSuccessListener {btReward.text = it}
+            traduzir_pergunta.translate(bt2).addOnSuccessListener {btAuto.text = it}
+            traduzir_pergunta.translate(chk).addOnSuccessListener {checkB.text = it}
+            traduzir_pergunta.translate(tx1).addOnSuccessListener {quest.text = it}
+            traduzir_pergunta.translate(tx2).addOnSuccessListener {example.text = it}
+            traduzir_pergunta.translate(tx3).addOnSuccessListener {using.text = it}
             }
     }
 }

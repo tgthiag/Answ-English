@@ -46,6 +46,7 @@ object textToSpeak{
             Translate(ctx).hint(cxHint,tradH,ctx)
         }
 
+
         pq.setOnClickListener {
             mTTS = TextToSpeech(applicationContext, TextToSpeech.OnInitListener { status ->
                 if (status != TextToSpeech.ERROR){
@@ -79,10 +80,10 @@ object textToSpeak{
             cursor.moveToFirst()
             var result = cursor.getString(2).toInt()
 
-            if (result != 0 || loopOn == true){
+            if (result > 0 || loopOn == true){
                 var job: Job? = null
                 if (loopOn == false){
-                    //=====DIMINUIR MOEDA AO ASSISTIR VÍDEO========
+                    //=====DIMINUIR MOEDA AO AUTOMATIZAR========
                     var update =  result - 1
                     cursor.close()
                     cv.put(COINS, update)
@@ -92,10 +93,9 @@ object textToSpeak{
 
                     //=======INICIANDO AUTOMATIZAÇÃO=========
                     loopOn = true
-                    popup().showCustomDialog(ctx, ctx.getString(R.string.auto_start))
+                    DialogShow().DialogCustom(ctx,"Automation Started, please wait.\n\nHint: You can use it to practice when you're away from the phone, doing your everyday things.\n\nYou've used 1 coin with this action")
 
                     //Toast.makeText(ctx,ctx.getString(R.string.auto_start),Toast.LENGTH_LONG).show()
-                    Toast.makeText(ctx,ctx.getString(R.string.coin) + ": -1.",Toast.LENGTH_LONG).show()
                     var job: Job? = null
                     job = GlobalScope.launch(main) { // launch a new coroutine in background and continue
                         while (loopOn == true) {
@@ -119,7 +119,7 @@ object textToSpeak{
                         }
                     }
                 }else{loopOn = false; Translate(ctx).toastTrad("Automation finished...");job?.cancel()}
-            }else{Toast.makeText(ctx,ctx.getString(R.string.coins_out),Toast.LENGTH_SHORT).show()}
+            }else{DialogShow().DialogCustom(ctx,"You don't have coins.\n\nYou will earn 2 coin every day that you open the app.\n\nAlso, you can watch a video to earn 3 coins anytime.")}
         }
 
 

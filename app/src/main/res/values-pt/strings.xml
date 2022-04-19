@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="hidehints">Esconder dicas</string>
+    <string name="hidehints">Ocultar exemplos</string>
     <string name="subtitle">Respondendo e aprendendo.</string>
     <string name="pergunta">Pergunta:</string>
     <string name="dica">Exemplo de resposta:</string>
@@ -31,4 +31,6 @@
     <string name="share">Compartilhar</string>
     <string name="shareMessage">Ei! Já baixou esse app? É muito bom pra praticar inglês!</string>
     <string name="shareFriends">Compartilhe com seus amigos!</string>
+    <string name="usinApp"># dias praticando neste app!</string>
+    <string name="first_day">Primeiro dia usando este app!</string>
 </resources>

@@ -2,6 +2,7 @@ package AnsweringAPP.activities
 
 
 import AnsweringAPP.dados.localSqlDatabase
+import AnsweringAPP.funcoes.DialogShow
 import AnsweringAPP.funcoes.Translate
 import android.content.Intent
 import android.os.Bundle
@@ -44,17 +45,12 @@ class MainActivity : AppCompatActivity() {
         }
         binding.btEveryDayThings.setOnClickListener {
             val intent = Intent(this,beginner::class.java)
-            intent.putExtra("level", "intermediate")
+            intent.putExtra("level", "begInterm")
             startActivity(intent)
         }
         binding.btJobInterview.setOnClickListener {
             val intent = Intent(this,beginner::class.java)
             intent.putExtra("level", "advanced")
-            startActivity(intent)
-        }
-        binding.btBegInterm.setOnClickListener {
-            val intent = Intent(this,beginner::class.java)
-            intent.putExtra("level", "begInterm")
             startActivity(intent)
         }
         binding.allQuestions .setOnClickListener {

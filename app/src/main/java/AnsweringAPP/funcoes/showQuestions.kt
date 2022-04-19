@@ -30,5 +30,17 @@ class Question {
 
     }
 
+    fun readByVoice(ctx: Context, cxQT: TextView){
+        mTTS = TextToSpeech(ctx,TextToSpeech.OnInitListener { status ->
+            if (status != TextToSpeech.ERROR){
+                mTTS.setLanguage(Locale.US)
+                mTTS.setSpeechRate(0.7F)
+                mTTS.setPitch(0.7F)
+                mTTS.speak(cxQT.text,TextToSpeech.QUEUE_FLUSH,null,null)
+            }
+        })
+
+    }
+
 
 }

@@ -15,15 +15,39 @@
         android:layout_height="match_parent"
         android:visibility="gone"
         android:id="@+id/preview">
-
     </androidx.camera.view.PreviewView>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btInstructions"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:background="@drawable/ic_help24"
+        app:layout_constraintBottom_toTopOf="@id/adView2"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+
     <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:layout_marginStart="100dp"
+        android:id="@+id/adCam"
+        android:layout_width="350dp"
+        android:layout_height="320dp"
+        android:background="@drawable/download"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:background="@drawable/download"/>
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txt_usingApp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/whiteTr"
+        android:textSize="20sp"
+        android:visibility="invisible"
+        android:textStyle="bold"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:text="@string/usinApp"/>
 
     <com.google.android.gms.ads.AdView
         android:id="@+id/adView"

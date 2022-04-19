@@ -32,5 +32,7 @@
     <string name="share">साझा करना</string>
     <string name="shareMessage">अरे! क्या आपने इस ऐप को आजमाया है? अंग्रेजी का अभ्यास करने के लिए यह अद्भुत है!</string>
     <string name="shareFriends">अपने दोस्तों के साथ साझा करें!</string>
+    <string name="usinApp"># इस ऐप का उपयोग करते हुए दिन!</string>
+    <string name="first_day">इस ऐप का उपयोग करके पहला दिन!</string>
 
 </resources>

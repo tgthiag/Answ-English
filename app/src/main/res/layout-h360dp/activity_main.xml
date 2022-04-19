@@ -115,18 +115,6 @@
             android:textAllCaps="false"
             />
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/bt_BegInterm"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginTop="4dp"
-            style="@style/bt_inicial"
-            android:layout_marginBottom="4dp"
-            android:text="@string/beginInterm"
-            android:textAllCaps="false"
-            />
-        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/allQuestions"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

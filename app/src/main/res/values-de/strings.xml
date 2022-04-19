@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="click_hereADS">Anzeige, um Münzen zu verdienen!</string>
-    <string name="hidehints">Tipps verstecken</string>
+    <string name="hidehints">Beispiele ausblenden</string>
     <string name="subtitle">Antworten und lernen!</string>
     <string name="pergunta">Frage:</string>
     <string name="automatizar">Automatisierer</string>
-    <string name="dica">Hinweis Beispiel:</string>
+    <string name="dica">Antwortbeispiel:</string>
     <string name="nohintsavailable">Keine Hinweise verfügbar.</string>
     <string name="firstLevel">Grundstufe - Anfänger</string>
     <string name="secondLevel">Mittelstufe</string>
@@ -31,5 +31,7 @@
     <string name="share">Teilen</string>
     <string name="shareMessage">Hey! Haben Sie diese App heruntergeladen? Es ist erstaunlich für Englisch üben!</string>
     <string name="shareFriends">Teile mit deinen Freunden!</string>
+    <string name="usinApp"># Tage üben mit dieser App!</string>
+    <string name="first_day">Erster Tag mit dieser App!</string>
 
 </resources>

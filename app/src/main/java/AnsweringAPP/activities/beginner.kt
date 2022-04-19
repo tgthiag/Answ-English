@@ -1,10 +1,10 @@
 package AnsweringAPP.activities
 
 import AnsweringAPP.dados.*
-import AnsweringAPP.funcoes.Translate
-import AnsweringAPP.funcoes.rewardedAd
-import AnsweringAPP.funcoes.textToSpeak
+import AnsweringAPP.funcoes.*
 import android.Manifest
+import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.ContentResolver
 import android.content.ContentValues
 import android.content.Context
@@ -23,6 +23,9 @@ import android.provider.MediaStore
 import android.provider.Settings
 import android.util.Log
 import android.view.View
+import android.view.WindowInsets
+import android.view.WindowInsetsController
+import android.view.WindowManager
 import android.widget.Button
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
@@ -47,6 +50,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.common.util.concurrent.ListenableFuture
 import com.hbisoft.hbrecorder.HBRecorder
 import com.hbisoft.hbrecorder.HBRecorderListener
+import kotlinx.coroutines.Job
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.sql.Date
@@ -67,14 +71,7 @@ class beginner : AppCompatActivity(), HBRecorderListener {
     //cameraX
     private lateinit var cameraProviderFuture: ListenableFuture<ProcessCameraProvider>
     private lateinit var cameraSelector: CameraSelector
-//    private val cameraProviderResult = registerForActivityResult(ActivityResultContracts.RequestPermission()){ permissionGranted->
-//        if(permissionGranted){
-//            // cut and paste the previous startCamera() call here.
-//            startCameraPreview()
-//        }else {
-//            Snackbar.make(binding.root,"The camera permission is required", Snackbar.LENGTH_INDEFINITE).show()
-//        }
-//    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -82,14 +79,10 @@ class beginner : AppCompatActivity(), HBRecorderListener {
         setContentView(binding.root)
         supportActionBar?.hide()
 
-//        private val REQUIRED_PERMISSIONS = arrayOf(
-//            Manifest.permission.CAMERA,
-//            Manifest.permission.READ_EXTERNAL_STORAGE
-//        )
-//        requestPermissionLauncher.launch(REQUIRED_PERMISSIONS)
         //CAMERA PREVIEW
         cameraProviderFuture = ProcessCameraProvider.getInstance(this)
         cameraSelector = CameraSelector.DEFAULT_FRONT_CAMERA
+
 
 
         //Traduções eram clicando nos botões, agora são automáticas
@@ -105,9 +98,19 @@ class beginner : AppCompatActivity(), HBRecorderListener {
         val classdb = localSqlDatabase(mainClass)
         val db = classdb.writableDatabase
         val selectQuery = "SELECT * FROM $TABLE_NAME;"
-        val cursor = db.rawQuery(selectQuery, null)
+        var cursor = db.rawQuery(selectQuery, null)
         cursor.moveToFirst()
+
+        //get Timer between questions
         fun getInt(coluna: String):Int{ return cursor.getInt(cursor.getColumnIndexOrThrow(coluna)) }
+
+        //Update Days using and Daily coins
+        DailyCoins().UpdateDayAndCoins(db,this)
+
+        Instructions(this).firstAcess(db)
+        binding.btInstructions?.setOnClickListener {
+        Instructions(this).callInstructions()
+        }
 
         //====CARREGANDO MOEDAS==========
 
@@ -119,16 +122,26 @@ class beginner : AppCompatActivity(), HBRecorderListener {
         loadBanner()
         rewardedAd().loadReward(this)
 
-
         //========BT-AD-REWARD========
         binding.btReward.setOnClickListener {
             rewardedAd().showAd(this,db)
             loadCoins(this,db)
-
         }
 
+        //Chamando texto "days using" na record screen.
+        var usoDoApp = binding.txtUsingApp?.text.toString()
+        cursor = db.rawQuery(selectQuery, null)
+        cursor.moveToFirst()
+        var daysUsing = cursor.getString(11)
+        if (daysUsing > "1"){
+        var usoDoAppFinal = usoDoApp.replace("#", daysUsing)
+        binding.txtUsingApp?.text = usoDoAppFinal
+        }else{binding.txtUsingApp?.text = getString(R.string.first_day)}
 
-
+        //Traduzindo botões e widgets para o idioma do User, caso não existam traduções disponíveis
+        Translate(this).translateButtons(binding.btReward, binding.btAutomatic, binding.checkDicas,
+            binding.playquestion, binding.playhint, binding.txtUsingApp
+        )
 
         //===========CHAMANDO PERGUNTAS e DEFININDO O TIMER==============
         var question_timer : Int
@@ -178,7 +191,7 @@ class beginner : AppCompatActivity(), HBRecorderListener {
         //STARTING SCREEN RECORDER AND CAMERA PREVIEW
         hbRecorder = HBRecorder(this, this)
         hbRecorder!!.setVideoEncoder("H264")
-        binding.toggle?.setOnClickListener{
+        binding.toggle.setOnClickListener{
             if (binding.toggle?.isChecked == true){
                 //first check if permissions was granted
                 if (checkSelfPermission(
@@ -192,36 +205,55 @@ class beginner : AppCompatActivity(), HBRecorderListener {
                     hasPermissions = true
                 }
                 if (hasPermissions) {
-                    binding.preview?.visibility = View.VISIBLE
-                    binding.adView?.visibility = View.INVISIBLE
-                    binding.adView2?.visibility = View.INVISIBLE
-                    binding.btAutomatic?.visibility = View.INVISIBLE
-                    binding.btReward?.visibility = View.INVISIBLE
-                    binding.txtMoedas?.visibility = View.INVISIBLE
-                    binding.contanersss?.setBackgroundColor(getColor(R.color.blackInvisible))
+                    loadCoins(this,db)
+                    cursor = db.rawQuery(selectQuery, null)
+                    cursor.moveToFirst()
+                    var coinsQtd = cursor.getString(2).toInt()
+                    if (coinsQtd >= 1) {
+                        binding.preview?.visibility = View.VISIBLE
+                        binding.adView?.visibility = View.INVISIBLE
+                        binding.adView2?.visibility = View.INVISIBLE
+                        binding.adCam?.visibility = View.VISIBLE
+                        binding.btAutomatic?.visibility = View.INVISIBLE
+                        binding.btReward?.visibility = View.INVISIBLE
+                        binding.btInstructions?.visibility = View.INVISIBLE
+                        binding.txtMoedas?.visibility = View.INVISIBLE
+                        binding.txtUsingApp?.visibility = View.VISIBLE
+                        binding.contanersss?.setBackgroundColor(getColor(R.color.blackInvisible))
+                        hideSystemUI()
 
-                    startCameraPreview()
-                    startRecordingScreen()
+
+                        startCameraPreview()
+                        startRecordingScreen()
+                    }else{
+                        DialogShow().DialogCustom(this,"You don't have coins.\n\nYou will earn 2 coin every day that you open the app.\n\n Also, you can watch a video to earn 3 coins anytime.")
+                        binding.toggle.isChecked = false
+                    }
                 }else {
                     Translate(this).toastTrad("The app need camera & audio permissions, verify the app configurations")
-//                    if (requestPermission()[0] != PackageManager.PERMISSION_GRANTED || requestPermission()[1] != PackageManager.PERMISSION_GRANTED || requestPermission()[2] != PackageManager.PERMISSION_GRANTED){
-//                        Toast.makeText(this, it.toString(), Toast.LENGTH_SHORT).show()
-//                            val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
-//                            intent.data = Uri.parse("package:$packageName")
-//                            startActivity(intent)
-//                    }
+                    requestPermission()
+    //                    if (requestPermission()[0] != PackageManager.PERMISSION_GRANTED || requestPermission()[1] != PackageManager.PERMISSION_GRANTED || requestPermission()[2] != PackageManager.PERMISSION_GRANTED){
+    //                        Toast.makeText(this, it.toString(), Toast.LENGTH_SHORT).show()
+    //                            val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
+    //                            intent.data = Uri.parse("package:$packageName")
+    //                            startActivity(intent)
+    //                    }
                     binding.toggle!!.isChecked = false
-                                    }
+                }
             }else{
                 hbRecorder!!.stopScreenRecording()
                 binding.preview?.visibility = View.GONE
                 binding.adView?.visibility = View.VISIBLE
                 binding.adView2?.visibility = View.VISIBLE
+                binding.adCam?.visibility = View.GONE
                 binding.btAutomatic?.visibility = View.VISIBLE
                 binding.btReward?.visibility = View.VISIBLE
+                binding.btInstructions?.visibility = View.VISIBLE
                 binding.txtMoedas?.visibility = View.VISIBLE
+                binding.txtUsingApp?.visibility =View.INVISIBLE
                 binding.contanersss?.setBackgroundColor(getColor(R.color.blackTr))
                 binding.contanersss?.setBackgroundResource(R.drawable.container_components)
+                showSystemUI()
 
             }
         }
@@ -229,10 +261,78 @@ class beginner : AppCompatActivity(), HBRecorderListener {
 
 
     }
+    fun Activity.hideSystemUI() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            window.insetsController?.let {
+                // Default behavior is that if navigation bar is hidden, the system will "steal" touches
+                // and show it again upon user's touch. We just want the user to be able to show the
+                // navigation bar by swipe, touches are handled by custom code -> change system bar behavior.
+                // Alternative to deprecated SYSTEM_UI_FLAG_IMMERSIVE.
+                it.systemBarsBehavior = WindowInsetsController.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+                // make navigation bar translucent (alternative to deprecated
+                // WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION)
+                // - do this already in hideSystemUI() so that the bar
+                // is translucent if user swipes it up
+                window.navigationBarColor = getColor(R.color.whiteTr)
+                // Finally, hide the system bars, alternative to View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                // and SYSTEM_UI_FLAG_FULLSCREEN.
+                it.hide(WindowInsets.Type.systemBars())
+            }
+        } else {
+            // Enables regular immersive mode.
+            // For "lean back" mode, remove SYSTEM_UI_FLAG_IMMERSIVE.
+            // Or for "sticky immersive," replace it with SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+            @Suppress("DEPRECATION")
+            window.decorView.systemUiVisibility = (
+                    // Do not let system steal touches for showing the navigation bar
+                    View.SYSTEM_UI_FLAG_IMMERSIVE
+                            // Hide the nav bar and status bar
+                            or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                            or View.SYSTEM_UI_FLAG_FULLSCREEN
+                            // Keep the app content behind the bars even if user swipes them up
+                            or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                            or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN)
+            // make navbar translucent - do this already in hideSystemUI() so that the bar
+            // is translucent if user swipes it up
+            @Suppress("DEPRECATION")
+            window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION)
+        }
+    }
+
+    fun Activity.showSystemUI() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            // show app content in fullscreen, i. e. behind the bars when they are shown (alternative to
+            // deprecated View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION and View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN)
+            window.setDecorFitsSystemWindows(false)
+            // finally, show the system bars
+            window.insetsController?.show(WindowInsets.Type.systemBars())
+        } else {
+            // Shows the system bars by removing all the flags
+            // except for the ones that make the content appear under the system bars.
+            @Suppress("DEPRECATION")
+            window.decorView.systemUiVisibility = (
+                    View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                            or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN)
+        }
+    }
     public override fun onPause() {
         binding.adView.pause()
         binding.adView2?.pause()
         super.onPause()
+    }
+    public override fun onStop() {
+        binding.adView.pause()
+        binding.adView2?.pause()
+        super.onStop()
+        if (hbRecorder!!.isBusyRecording){
+            hbRecorder!!.stopScreenRecording()
+        }
+    }
+
+    public override fun onRestart() {
+        super.onRestart()
+        binding.adView.resume()
+        binding.adView2?.resume()
     }
 
     // Called when returning to the activity
@@ -258,6 +358,21 @@ class beginner : AppCompatActivity(), HBRecorderListener {
         cursor.close()
         return result
 
+    }
+    fun useCoin(){
+        val mainClass = this@beginner
+        val classdb = localSqlDatabase(mainClass)
+        val db = classdb.writableDatabase
+        val selectQuery = "SELECT * FROM $TABLE_NAME;"
+        val cursores = db.rawQuery(selectQuery, null)
+        cursores.moveToFirst()
+        var moedaAtual = cursores.getString(2).toInt()
+        var moedaResult = moedaAtual -1
+        var cv = ContentValues()
+        cv.put(COINS,moedaResult)
+        db.update(TABLE_NAME,cv,null,null)
+        loadCoins(mainClass,db)
+        cursores.close()
     }
 
     private fun loadBanner() {
@@ -293,16 +408,30 @@ class beginner : AppCompatActivity(), HBRecorderListener {
 
     override fun HBRecorderOnStart() {
 
+        Question().readByVoice(this, binding.cxTexto)
     }
 
     override fun HBRecorderOnComplete() {
         //Update gallery depending on SDK Level
+
         if (hbRecorder!!.wasUriSet()) {
             updateGalleryUri()
         } else {
             refreshGalleryFile()
         }
-        Translate(this).toastTrad("Your video has been saved in the gallery.")
+        useCoin()
+        val mainClass = this
+        val classdb = localSqlDatabase(mainClass)
+        val db = classdb.writableDatabase
+        val selectQuery = "SELECT * FROM $TABLE_NAME;"
+        var cursoress = db.rawQuery(selectQuery, null)
+        cursoress.moveToFirst()
+        var usedTheApp = cursoress.getString(4).toInt()
+        var moedas = cursoress.getString(2).toInt()
+        if (usedTheApp == 1 && moedas <= 4){
+            DialogShow().DialogReview(this,db,"Are you enjoying this app?")
+        }
+        DialogShow().DialogCustom(this,"Your video has been saved in the gallery.\n\nYou can share it to your social media!\n\nYou've used 1 coin.")
     }
 
     override fun HBRecorderOnError(errorCode: Int, reason: String) {
@@ -374,6 +503,7 @@ class beginner : AppCompatActivity(), HBRecorderListener {
 
         }
         contentResolver.update(mUri!!, contentValues, null, null)
+        Toast.makeText(this,mUri.toString(),Toast.LENGTH_LONG).show()
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -469,7 +599,6 @@ class beginner : AppCompatActivity(), HBRecorderListener {
 
             }
         }
-Toast.makeText(this,"tentando",Toast.LENGTH_SHORT).show()
     return listOf(ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO),ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE),ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA))
     }
 

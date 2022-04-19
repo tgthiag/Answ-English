@@ -119,18 +119,6 @@
             android:textAllCaps="false"
             />
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/bt_BegInterm"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginTop="8dp"
-            style="@style/bt_inicial"
-            android:layout_marginBottom="8dp"
-            android:text="@string/beginInterm"
-            android:textAllCaps="false"
-            />
-        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/allQuestions"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -150,9 +138,10 @@
         android:layout_height="wrap_content"
         app:adSize="SMART_BANNER"
         app:adUnitId="ca-app-pub-2884509228034182/8623568236"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linear" />
 
 

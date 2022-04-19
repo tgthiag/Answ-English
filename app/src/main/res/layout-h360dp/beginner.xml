@@ -4,27 +4,69 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@drawable/background"
     android:gravity="center"
     android:keepScreenOn="true"
+    android:orientation="vertical"
     tools:context="AnsweringAPP.activities.beginner">
+
     <androidx.camera.view.PreviewView
+        android:id="@+id/preview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:visibility="gone" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btInstructions"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:scaleY="0.8"
+        android:scaleX="0.8"
+        android:background="@drawable/ic_help24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+
+    <ImageView
+        android:id="@+id/adCam"
+        android:layout_width="250dp"
+        android:layout_height="220dp"
+        android:background="@drawable/download"
         android:visibility="gone"
-        android:id="@+id/preview"/>
-    <com.google.android.gms.ads.AdView
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txt_usingApp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/whiteTr"
+        android:textSize="18sp"
+        android:visibility="invisible"
+        android:textStyle="bold"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="45dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:text="@string/usinApp"/>
+
+    <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
         android:id="@+id/adView"
-        xmlns:ads="http://schemas.android.com/apk/res-auto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         ads:adSize="BANNER"
-        ads:adUnitId="ca-app-pub-2884509228034182/8623568236"/>
+        ads:adUnitId="ca-app-pub-2884509228034182/8623568236"
+        ads:layout_constraintEnd_toEndOf="parent"
+        ads:layout_constraintStart_toStartOf="parent"
+        ads:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
+        android:id="@+id/principalLinear"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/adView">
 
         <Button
             android:id="@+id/bt_reward"
@@ -34,106 +76,120 @@
             android:layout_gravity="center"
             android:text="@string/click_hereADS"
             android:textSize="11sp" />
+
         <TextView
             android:id="@+id/txt_moedas"
+            style="@style/ContainerComponents"
             android:layout_width="wrap_content"
             android:layout_height="35dp"
+            android:layout_gravity="center"
             android:drawableStart="@drawable/coin"
+            android:padding="13dp"
             android:text=""
             android:textColor="@color/white"
-            android:layout_gravity="center"
-            android:padding="13dp"
-            android:textSize="14sp"
-            style="@style/ContainerComponents"/>
+            android:textSize="14sp" />
     </LinearLayout>
 
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/containerQT"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="206dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:background="@drawable/container_components"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/principalLinear">
 
-        <TextView
-            android:id="@+id/playquestion"
+        <LinearLayout
+            android:id="@+id/contanersss"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="3dp"
-            android:clickable="true"
-            android:focusable="true"
-            android:gravity="center"
-            android:text="@string/pergunta"
-            android:textColor="@color/white"
-            app:drawableBottomCompat="@drawable/playhint" />
+            android:layout_height="206dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/container_components"
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/cxTexto"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="0dp"
-            android:clickable="true"
-            android:focusable="true"
-            android:gravity="center"
-            android:textColor="@color/white"
-            android:textSize="20sp" />
-        <TextView
-            android:id="@+id/cxTradQ"
-            android:layout_width="match_parent"
-            android:layout_marginTop="0dp"
-            android:textColor="@color/gray"
-            android:textSize="12sp"
-            android:layout_height="wrap_content"
-            android:gravity="center"/>
+            <TextView
+                android:id="@+id/playquestion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:text="@string/pergunta"
+                android:textColor="@color/white"
+                app:drawableBottomCompat="@drawable/playhint" />
 
-        <TextView
-            android:id="@+id/playhint"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:clickable="true"
-            android:focusable="true"
-            android:gravity="center"
-            android:text="@string/dica"
-            android:textColor="@color/white"
-            android:drawableBottom="@drawable/playhint" />
+            <TextView
+                android:id="@+id/cxTexto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
 
-        <TextView
-            android:id="@+id/cxHint"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:clickable="true"
-            android:focusable="true"
-            android:gravity="center"
-            android:textColor="@color/white"
-            android:textSize="20sp" />
-        <TextView
-            android:id="@+id/cxTradH"
-            android:layout_width="match_parent"
-            android:layout_marginBottom="5dp"
-            android:textColor="@color/gray"
-            android:textSize="12sp"
-            android:layout_height="wrap_content"
-            android:gravity="center"/>
-    </LinearLayout>
+            <TextView
+                android:id="@+id/cxTradQ"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:gravity="center"
+                android:textColor="@color/gray"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/playhint"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:text="@string/dica"
+                android:textColor="@color/white"
+                app:drawableBottomCompat="@drawable/playhint" />
+
+            <TextView
+                android:id="@+id/cxHint"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/cxTradH"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:gravity="center"
+                android:textColor="@color/gray"
+                android:textSize="12sp" />
+        </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
     <LinearLayout
+        android:id="@+id/cxauto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:weightSum="2">
-    <CheckBox
-        android:id="@+id/check_dicas"
-        android:layout_width="wrap_content"
-        android:layout_height="35dp"
-        android:text="@string/hidehints"
-        android:layout_marginStart="10dp"
-        android:textSize="14sp"
-        android:layout_gravity="start"
-        android:layout_weight="1"/>
+        android:weightSum="2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/containerQT">
+
+        <CheckBox
+            android:id="@+id/check_dicas"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_gravity="start"
+            android:layout_marginStart="10dp"
+            android:layout_weight="1"
+            android:text="@string/hidehints"
+            android:textSize="14sp" />
 
         <Button
             android:id="@+id/btAutomatic"
@@ -142,40 +198,56 @@
             android:layout_height="35dp"
             android:layout_gravity="end"
             android:layout_marginEnd="10dp"
-            android:layout_weight="1"
             android:layout_marginBottom="1dp"
+            android:layout_weight="1"
             android:text="@string/automatizar"
             android:textAllCaps="false"
             android:textSize="14sp" />
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/cxPass"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:weightSum="2">
+        android:weightSum="2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cxauto">
 
         <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/bt_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="60dp"
+            android:layout_marginStart="40dp"
             android:layout_marginTop="0dp"
-            android:layout_marginEnd="15dp"
+            android:layout_marginEnd="10dp"
             android:layout_marginBottom="0dp"
             android:layout_weight="1"
             android:background="@drawable/arrow_leftt"
             app:icon="@drawable/arrow_leftt" />
 
+        <ToggleButton
+            android:id="@+id/toggle"
+            style="@style/ContainerBlack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:drawableTop="@drawable/ic_videocam"
+            android:textColor="@color/white"
+            android:textOff="@string/auto_ligar"
+            android:textOn="@string/auto_desligar" />
+
         <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/bt_front"
             android:layout_width="wrap_content"
-            android:background="@drawable/arrow_right"
             android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="0dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginEnd="60dp"
+            android:layout_marginEnd="40dp"
             android:layout_marginBottom="0dp"
             android:layout_weight="1"
+            android:background="@drawable/arrow_right"
             app:icon="@drawable/arrow_right" />
 
 

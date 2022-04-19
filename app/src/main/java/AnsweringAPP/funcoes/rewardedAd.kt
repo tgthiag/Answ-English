@@ -9,7 +9,6 @@ import android.util.Log
 import android.widget.Toast
 import AnsweringAPP.activities.beginner
 import AnsweringAPP.dados.COINS
-import AnsweringAPP.dados.INTERSTITIAL
 import AnsweringAPP.dados.TABLE_NAME
 import com.AnsweringAPP.R
 import com.google.android.gms.ads.*
@@ -73,14 +72,14 @@ fun  showAd(ctx : Activity, db : SQLiteDatabase) {
                 val cursor = db.rawQuery(selectQuery, null)
                 cursor.moveToFirst()
                 var result = cursor.getString(2).toInt()
-                var update =  result + 2
+                var update =  result + 3
                 cursor.close()
 
                 Log.d(TAG, "Ad was finished. User earned the reward.")
 
                 cv.put(COINS, update)
                 db.update(TABLE_NAME, cv,null,null)
-                Toast.makeText(ctx,ctx.getString(R.string.coin) + ": +2",Toast.LENGTH_SHORT).show()
+                Toast.makeText(ctx,ctx.getString(R.string.coin) + ": +3",Toast.LENGTH_SHORT).show()
                 beginner().loadCoins(ctx,db)
             }
             onUserEarnedReward(it)

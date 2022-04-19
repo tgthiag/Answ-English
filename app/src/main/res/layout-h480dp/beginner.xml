@@ -16,17 +16,53 @@
         android:visibility="gone"
         android:id="@+id/preview"/>
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btInstructions"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:scaleY="0.8"
+        android:scaleX="0.8"
+        android:background="@drawable/ic_help24"
+        app:layout_constraintBottom_toTopOf="@id/adView2"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+
+    <ImageView
+        android:id="@+id/adCam"
+        android:layout_width="250dp"
+        android:layout_height="220dp"
+        android:background="@drawable/download"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txt_usingApp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/whiteTr"
+        android:textSize="18sp"
+        android:visibility="invisible"
+        android:textStyle="bold"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:text="@string/usinApp"/>
+
     <com.google.android.gms.ads.AdView
         android:id="@+id/adView"
         xmlns:ads="http://schemas.android.com/apk/res-auto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        ads:adSize="BANNER"
+        ads:adSize="SMART_BANNER"
         ads:layout_constraintTop_toTopOf="parent"
+        ads:layout_constraintStart_toStartOf="parent"
+        ads:layout_constraintEnd_toEndOf="parent"
         ads:adUnitId="ca-app-pub-2884509228034182/8623568236"/>
 
     <LinearLayout
-        android:id="@+id/linearcoins"
+        android:id="@+id/principalLinear"
         app:layout_constraintTop_toBottomOf="@id/adView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -57,10 +93,11 @@
 
         <androidx.core.widget.NestedScrollView
             android:id="@+id/nested"
-            app:layout_constraintTop_toBottomOf="@id/linearcoins"
+            app:layout_constraintTop_toBottomOf="@id/principalLinear"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <LinearLayout
+                android:id="@+id/contanersss"
                 android:layout_width="match_parent"
                 android:layout_height="275dp"
                 android:orientation="vertical"
@@ -206,8 +243,8 @@
         android:layout_height="wrap_content"
         app:adSize="BANNER"
         app:adUnitId="ca-app-pub-2884509228034182/9207595979"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 

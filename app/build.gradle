@@ -10,8 +10,8 @@ android {
         applicationId "com.answering"
         minSdk 23
         targetSdk 31
-        versionCode 12
-        versionName "2.11"
+        versionCode 17
+        versionName "3.4"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -58,6 +58,14 @@ dependencies {
     implementation "androidx.camera:camera-lifecycle:$camerax_version"
     // CameraX View class
     implementation "androidx.camera:camera-view:1.0.0-alpha27"
+
+    // ...Google in app review
+    implementation 'com.google.android.play:core:1.8.0'
+    implementation 'com.google.android.play:core-ktx:1.8.1'
+
+        // ...
+
+
 
 
 

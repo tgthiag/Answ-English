@@ -17,7 +17,7 @@ class DialogShow() {
         Translate(ctx).traduzir_pergunta.translate(
             "You've started with some coins!\n\nYou will earn 2 coin every day that you open the app.\n\nCoins are used for video recording and to automatize the questions.\n\n" +
                     "You can earn 3 coins by watching a video anytime.\n\nUse the automatize button to answer questions while doing your everyday things.\n\n" +
-                    "Start recording videos to share on your WhatsApp, Facebook and Instagram posts, show your progress along time!\n\nEvery level has different questions, try it!"
+                    "Start recording videos to share on your WhatsApp, Facebook and Instagram posts, as soon as you click the camera button, it will start, tap the blue arrows for next question.\n\nEvery level has different questions, try it!"
         ).addOnSuccessListener {
             val builder: AlertDialog.Builder = AlertDialog.Builder(ctx)
 
@@ -104,10 +104,21 @@ class DialogShow() {
             mDialog.show()
         }
     }
+    fun firstDialog(ctx : Context) {
+        var message = "First time here?\n\nWait some seconds.\n\nWe are configuring your translations.\n\n\n\n\n\nTips:\nThe blue arrows bring the next question\nWe have four levels, every level has different questions.\nStart with beginner, these are fast questions, it will be a great video."
+        val builder: AlertDialog.Builder = AlertDialog.Builder(ctx)
+
+        builder.setMessage(message)
+
+        builder.apply {
+            setPositiveButton("Ok") { dialog, id ->
+                val selectedId = id
+            }
+        }
+        val dialog: AlertDialog? = builder.create()
+
+        dialog!!.show()
+
+    }
 }
-//                 if (option == "Yes, I love it!"){
-////                     inAppReview().call(ctx)
-//                     dialog.dismiss()
-//                 }else{
-//                     Translate(ctx).toastTrad("Sorry, we are working to give you a better experience");dialog.dismiss()
-//                 }
+

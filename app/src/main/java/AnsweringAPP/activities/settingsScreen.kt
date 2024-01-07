@@ -1,17 +1,14 @@
 package AnsweringAPP.activities
 
+import AnsweringAPP.dados.*
+import AnsweringAPP.funcoes.settingsSQL
 import android.content.ContentValues
 import android.database.sqlite.SQLiteDatabase
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.EditText
 import android.widget.Toast
-import AnsweringAPP.dados.*
-import com.AnsweringAPP.databinding.ActivityMainBinding.inflate
+import androidx.appcompat.app.AppCompatActivity
 import com.AnsweringAPP.databinding.ActivitySettingsScreenBinding
-import com.AnsweringAPP.databinding.ActivitySettingsScreenBinding.inflate
-import com.AnsweringAPP.databinding.BeginnerBinding.inflate
-import AnsweringAPP.funcoes.settingsSQL
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.MobileAds
 

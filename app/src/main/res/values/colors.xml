@@ -19,4 +19,5 @@
     <color name="red_rd">#E31717</color>
     <color name="gray">#575555</color>
     <color name="whitetxt">#FFFFFF</color>
+    <color name="transparent">#00FFFFFF</color>
 </resources>

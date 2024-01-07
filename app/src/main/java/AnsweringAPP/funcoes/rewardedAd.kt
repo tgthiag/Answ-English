@@ -32,7 +32,7 @@ class rewardedAd {
             adRequest,
             object : RewardedAdLoadCallback() {
                 override fun onAdFailedToLoad(adError: LoadAdError) {
-                    Log.d(TAG, adError?.message)
+                    adError?.message?.let { Log.d(TAG, it) }
                     rewardvar = null
                 }
 

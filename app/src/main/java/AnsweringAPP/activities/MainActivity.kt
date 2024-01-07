@@ -1,20 +1,18 @@
 package AnsweringAPP.activities
 
 
+import AnsweringAPP.dados.TABLE_NAME
 import AnsweringAPP.dados.localSqlDatabase
 import AnsweringAPP.funcoes.DialogShow
 import AnsweringAPP.funcoes.Translate
 import android.content.Intent
 import android.os.Bundle
-import android.telephony.TelephonyManager
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ShareCompat
 import com.AnsweringAPP.R
 import com.AnsweringAPP.databinding.ActivityMainBinding
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.MobileAds
-import java.util.*
 
 
 private lateinit var binding : ActivityMainBinding
@@ -32,10 +30,25 @@ class MainActivity : AppCompatActivity() {
         val mainClass = this
         val classdb = localSqlDatabase(mainClass)
         val db = classdb.writableDatabase
+        var query = "SELECT * FROM $TABLE_NAME;"
         classdb.initializeRow()
+
+        var cursorr = db.rawQuery(query,null)
+        cursorr.moveToFirst()
+        var isFirstAcess = cursorr.getString(4).toInt()
+
+        if (isFirstAcess == 0){
+            try {
+                DialogShow().firstDialog(this)
+            }catch (e : Exception){
+                print("error")}
+        }
+
 
         MobileAds.initialize(this) {}
         loadBanner()
+
+
 
 
         binding.btAboutYou.setOnClickListener {

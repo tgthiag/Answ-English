@@ -14,8 +14,8 @@ class Question {
         mTTS = TextToSpeech(ctx,TextToSpeech.OnInitListener { status ->
             if (status != TextToSpeech.ERROR){
                 mTTS.setLanguage(Locale.US)
-                mTTS.setSpeechRate(0.7F)
-                mTTS.setPitch(0.7F)
+//                mTTS.setSpeechRate(0.7F)
+//                mTTS.setPitch(0.7F)
                 mTTS.speak(hint[posDaPergunta][0],TextToSpeech.QUEUE_FLUSH,null,null)
             }
         })
@@ -34,8 +34,8 @@ class Question {
         mTTS = TextToSpeech(ctx,TextToSpeech.OnInitListener { status ->
             if (status != TextToSpeech.ERROR){
                 mTTS.setLanguage(Locale.US)
-                mTTS.setSpeechRate(0.7F)
-                mTTS.setPitch(0.7F)
+//                mTTS.setSpeechRate(0.7F)
+//                mTTS.setPitch(0.7F)
                 mTTS.speak(cxQT.text,TextToSpeech.QUEUE_FLUSH,null,null)
             }
         })

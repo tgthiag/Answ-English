@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context="AnsweringAPP.activities.AutomaticQuestions">
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btInstructions"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="5dp"
+        android:background="@drawable/ic_help24"
+        app:layout_constraintBottom_toTopOf="@id/adView2"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+
+<!--    <com.google.android.gms.ads.AdView-->
+<!--        android:id="@+id/adView"-->
+<!--        android:layout_marginTop="3dp"-->
+<!--        xmlns:ads="http://schemas.android.com/apk/res-auto"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        ads:adSize="SMART_BANNER"-->
+<!--        ads:layout_constraintTop_toTopOf="parent"-->
+<!--        ads:layout_constraintStart_toStartOf="parent"-->
+<!--        ads:layout_constraintEnd_toEndOf="parent"-->
+<!--        ads:adUnitId="ca-app-pub-2884509228034182/8623568236"/>-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:text="Automatic Questions"
+            style="@style/Title"
+            android:layout_margin="5dp"
+            android:background="@drawable/container_components"
+            />
+
+        <TextView
+            android:id="@+id/txt_moedas"
+            style="@style/ContainerComponents"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:drawableStart="@drawable/coin"
+            android:padding="13dp"
+            android:text=""
+            android:textColor="@color/white"
+            android:textSize="14dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/principalLinear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@id/adView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/contanersss"
+                android:layout_width="match_parent"
+                android:layout_height="360dp"
+                android:layout_margin="10dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/container_components"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/playquestion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:text="@string/pergunta"
+                    android:textColor="@color/white"
+                    app:drawableBottomCompat="@drawable/playhint" />
+
+                <TextView
+                    android:id="@+id/cxTexto"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="0dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:id="@+id/cxTradQ"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="0dp"
+                    android:gravity="center"
+                    android:textColor="@color/gray"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/playhint"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:text="@string/dica"
+                    android:textColor="@color/white"
+                    app:drawableBottomCompat="@drawable/playhint" />
+
+                <TextView
+                    android:id="@+id/cxHint"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:id="@+id/cxTradH"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="0dp"
+                    android:gravity="center"
+                    android:textColor="@color/gray"
+                    android:textSize="14sp" />
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:weightSum="3">
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/bt_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="80dp"
+                android:layout_marginEnd="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/arrow_leftt"
+                app:icon="@drawable/arrow_leftt" />
+
+            <ToggleButton
+                android:id="@+id/toggle"
+                style="@style/ContainerBlack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:padding="10dp"
+                android:textColor="@color/white"
+                android:textOff="@string/auto_ligar"
+                android:textOn="@string/auto_desligar" />
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/bt_front"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="80dp"
+                android:layout_weight="1"
+                android:background="@drawable/arrow_right"
+                app:icon="@drawable/arrow_right" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="3dp"
+        app:adSize="SMART_BANNER"
+        app:adUnitId="ca-app-pub-2884509228034182/9207595979"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

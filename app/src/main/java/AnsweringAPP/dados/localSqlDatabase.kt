@@ -49,6 +49,5 @@ class localSqlDatabase(ctx : Context) : SQLiteOpenHelper(ctx, TABLE_NAME,null,5)
         cv.put(TM_ALLQUESTIONS, 9)
         cv.put(DIAS_USO, 0)
         db.insert(TABLE_NAME, null, cv)
-        db.close()
     }
 }

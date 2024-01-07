@@ -3,7 +3,6 @@ package AnsweringAPP.activities
 import AnsweringAPP.dados.*
 import AnsweringAPP.funcoes.*
 import android.Manifest
-import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.ContentResolver
 import android.content.ContentValues
@@ -20,7 +19,6 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
-import android.provider.Settings
 import android.util.Log
 import android.view.View
 import android.view.WindowInsets
@@ -28,16 +26,17 @@ import android.view.WindowInsetsController
 import android.view.WindowManager
 import android.widget.Button
 import android.widget.Toast
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.DrawableRes
 import androidx.annotation.RequiresApi
-
 import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.app.ActivityCompat
+import androidx.core.app.ShareCompat
 import androidx.core.content.ContextCompat
+import androidx.core.content.FileProvider
+import com.AnsweringAPP.BuildConfig
 import com.AnsweringAPP.R
 import com.AnsweringAPP.databinding.BeginnerBinding
 import com.google.android.gms.ads.AdRequest
@@ -46,11 +45,9 @@ import com.google.android.gms.ads.LoadAdError
 import com.google.android.gms.ads.MobileAds
 import com.google.android.gms.ads.interstitial.InterstitialAd
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
-import com.google.android.material.snackbar.Snackbar
 import com.google.common.util.concurrent.ListenableFuture
 import com.hbisoft.hbrecorder.HBRecorder
 import com.hbisoft.hbrecorder.HBRecorderListener
-import kotlinx.coroutines.Job
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.sql.Date
@@ -108,8 +105,8 @@ class beginner : AppCompatActivity(), HBRecorderListener {
         DailyCoins().UpdateDayAndCoins(db,this)
 
         Instructions(this).firstAcess(db)
-        binding.btInstructions?.setOnClickListener {
-        Instructions(this).callInstructions()
+        binding.btInstructions.setOnClickListener {
+            Instructions(this).callInstructions()
         }
 
         //====CARREGANDO MOEDAS==========
@@ -134,8 +131,8 @@ class beginner : AppCompatActivity(), HBRecorderListener {
         cursor.moveToFirst()
         var daysUsing = cursor.getString(11)
         if (daysUsing > "1"){
-        var usoDoAppFinal = usoDoApp.replace("#", daysUsing)
-        binding.txtUsingApp?.text = usoDoAppFinal
+            var usoDoAppFinal = usoDoApp.replace("#", daysUsing)
+            binding.txtUsingApp?.text = usoDoAppFinal
         }else{binding.txtUsingApp?.text = getString(R.string.first_day)}
 
         //Traduzindo botões e widgets para o idioma do User, caso não existam traduções disponíveis
@@ -226,18 +223,21 @@ class beginner : AppCompatActivity(), HBRecorderListener {
                         startCameraPreview()
                         startRecordingScreen()
                     }else{
-                        DialogShow().DialogCustom(this,"You don't have coins.\n\nYou will earn 2 coin every day that you open the app.\n\n Also, you can watch a video to earn 3 coins anytime.")
+                        try {
+                            DialogShow().DialogCustom(this,"You don't have coins.\n\nYou will earn 2 coin every day that you open the app.\n\n Also, you can watch a video to earn 3 coins anytime.")
+                        }catch (e: Exception){
+                            print("erro")}
                         binding.toggle.isChecked = false
                     }
                 }else {
                     Translate(this).toastTrad("The app need camera & audio permissions, verify the app configurations")
                     requestPermission()
-    //                    if (requestPermission()[0] != PackageManager.PERMISSION_GRANTED || requestPermission()[1] != PackageManager.PERMISSION_GRANTED || requestPermission()[2] != PackageManager.PERMISSION_GRANTED){
-    //                        Toast.makeText(this, it.toString(), Toast.LENGTH_SHORT).show()
-    //                            val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
-    //                            intent.data = Uri.parse("package:$packageName")
-    //                            startActivity(intent)
-    //                    }
+                    //                    if (requestPermission()[0] != PackageManager.PERMISSION_GRANTED || requestPermission()[1] != PackageManager.PERMISSION_GRANTED || requestPermission()[2] != PackageManager.PERMISSION_GRANTED){
+                    //                        Toast.makeText(this, it.toString(), Toast.LENGTH_SHORT).show()
+                    //                            val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
+                    //                            intent.data = Uri.parse("package:$packageName")
+                    //                            startActivity(intent)
+                    //                    }
                     binding.toggle!!.isChecked = false
                 }
             }else{
@@ -382,7 +382,7 @@ class beginner : AppCompatActivity(), HBRecorderListener {
 //      real banner  ca-app-pub-2884509228034182/8623568236
 //     teste   ca-app-pub-3940256099942544/6300978111
     }
-//real: ca-app-pub-2884509228034182/7941879672
+    //real: ca-app-pub-2884509228034182/7941879672
     //teste: ca-app-pub-3940256099942544/8691691433
     private fun loadInterstitial() {
         val adRequest = AdRequest.Builder().build()
@@ -429,9 +429,11 @@ class beginner : AppCompatActivity(), HBRecorderListener {
         var usedTheApp = cursoress.getString(4).toInt()
         var moedas = cursoress.getString(2).toInt()
         if (usedTheApp == 1 && moedas <= 4){
-            DialogShow().DialogReview(this,db,"Are you enjoying this app?")
+            try {
+                DialogShow().DialogReview(this,db,"Are you enjoying this app?")
+            }catch (e: Exception){
+                print("erro")}
         }
-        DialogShow().DialogCustom(this,"Your video has been saved in the gallery.\n\nYou can share it to your social media!\n\nYou've used 1 coin.")
     }
 
     override fun HBRecorderOnError(errorCode: Int, reason: String) {
@@ -513,6 +515,10 @@ class beginner : AppCompatActivity(), HBRecorderListener {
         ) { path, uri ->
             Log.i("ExternalStorage", "Scanned $path:")
             Log.i("ExternalStorage", "-> uri=$uri")
+            try {
+                shareVideo(path)
+            }catch (e: Exception){
+                print("erro")}
         }
     }
 
@@ -599,7 +605,19 @@ class beginner : AppCompatActivity(), HBRecorderListener {
 
             }
         }
-    return listOf(ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO),ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE),ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA))
+        return listOf(ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO),ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE),ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA))
     }
+    fun shareVideo(filePath:String) {
 
+        val videoFile = File(filePath)
+        val videoURI = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N)
+            FileProvider.getUriForFile(this,BuildConfig.APPLICATION_ID + ".fileprovider", videoFile) //baseContext.packageName
+        else
+            Uri.fromFile(videoFile)
+        ShareCompat.IntentBuilder.from(this)
+            .setStream(videoURI)
+            .setType("video/mp4")
+            .setChooserTitle("Share your video to social media")
+            .startChooser()
+    }
 }

@@ -4,14 +4,14 @@ plugins {
 }
 
 android {
-    compileSdk 31
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.answering"
         minSdk 23
-        targetSdk 31
-        versionCode 19
-        versionName "3.6"
+        targetSdk 33
+        versionCode 21
+        versionName "3.8"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -49,7 +49,8 @@ dependencies {
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.8'
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.1"
     implementation 'com.google.mlkit:translate:17.0.0'
-    implementation 'com.github.HBiSoft:HBRecorder:0.1.15'
+    implementation 'com.github.HBiSoft:HBRecorder:3.0.1'
+    implementation 'androidx.work:work-runtime:2.7.0-alpha05'
 
     def camerax_version = "1.0.1"
     // CameraX core library using camera2 implementation

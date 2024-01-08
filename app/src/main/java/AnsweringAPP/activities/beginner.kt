@@ -428,7 +428,7 @@ class beginner : AppCompatActivity(), HBRecorderListener {
         cursoress.moveToFirst()
         var usedTheApp = cursoress.getString(4).toInt()
         var moedas = cursoress.getString(2).toInt()
-        if (usedTheApp == 1 && moedas <= 4){
+        if (usedTheApp == 1 && moedas > 6){
             try {
                 DialogShow().DialogReview(this,db,"Are you enjoying this app?")
             }catch (e: Exception){
@@ -440,11 +440,21 @@ class beginner : AppCompatActivity(), HBRecorderListener {
         Toast.makeText(this, "$errorCode: $reason", Toast.LENGTH_SHORT).show()
     }
 
+    override fun HBRecorderOnPause() {
+        TODO("Not yet implemented")
+    }
+
+    override fun HBRecorderOnResume() {
+        TODO("Not yet implemented")
+    }
+
     private fun startRecordingScreen() {
         val mediaProjectionManager =
             getSystemService(MEDIA_PROJECTION_SERVICE) as MediaProjectionManager
         val permissionIntent = mediaProjectionManager?.createScreenCaptureIntent()
-        startActivityForResult(permissionIntent, SCREEN_RECORD_REQUEST_CODE)
+        if (permissionIntent != null) {
+            startActivityForResult(permissionIntent, SCREEN_RECORD_REQUEST_CODE)
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -452,7 +462,7 @@ class beginner : AppCompatActivity(), HBRecorderListener {
         if (requestCode == SCREEN_RECORD_REQUEST_CODE) {
             if (resultCode == RESULT_OK) {
                 //Start screen recording
-                hbRecorder!!.startScreenRecording(data, resultCode, this)
+                hbRecorder!!.startScreenRecording(data, resultCode)
             }
         }
     }

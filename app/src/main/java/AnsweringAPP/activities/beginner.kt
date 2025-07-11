@@ -1,7 +1,21 @@
 package AnsweringAPP.activities
 
-import AnsweringAPP.dados.*
-import AnsweringAPP.funcoes.*
+import AnsweringAPP.dados.COINS
+import AnsweringAPP.dados.Questions
+import AnsweringAPP.dados.TABLE_NAME
+import AnsweringAPP.dados.TM_ADVANC
+import AnsweringAPP.dados.TM_ALLQUESTIONS
+import AnsweringAPP.dados.TM_BASIC
+import AnsweringAPP.dados.TM_BEG_INTERM
+import AnsweringAPP.dados.TM_INTERM
+import AnsweringAPP.dados.localSqlDatabase
+import AnsweringAPP.funcoes.DailyCoins
+import AnsweringAPP.funcoes.DialogShow
+import AnsweringAPP.funcoes.Instructions
+import AnsweringAPP.funcoes.Question
+import AnsweringAPP.funcoes.Translate
+import AnsweringAPP.funcoes.rewardedAd
+import AnsweringAPP.funcoes.textToSpeak
 import android.Manifest
 import android.app.Activity
 import android.content.ContentResolver
@@ -12,7 +26,10 @@ import android.content.pm.PackageManager
 import android.database.sqlite.SQLiteDatabase
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.hardware.display.DisplayManager
+import android.hardware.display.VirtualDisplay
 import android.media.MediaScannerConnection
+import android.media.projection.MediaProjection
 import android.media.projection.MediaProjectionManager
 import android.net.Uri
 import android.os.Build
@@ -52,7 +69,8 @@ import java.io.ByteArrayOutputStream
 import java.io.File
 import java.sql.Date
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Locale
+
 
 private lateinit var binding: BeginnerBinding
 class beginner : AppCompatActivity(), HBRecorderListener {
@@ -64,6 +82,8 @@ class beginner : AppCompatActivity(), HBRecorderListener {
     var contentValues: ContentValues? = null
     var resolver: ContentResolver? = null
     var mUri: Uri? = null
+    private var mediaProjection: MediaProjection? = null
+    private var virtualDisplay: VirtualDisplay? = null
 
     //cameraX
     private lateinit var cameraProviderFuture: ListenableFuture<ProcessCameraProvider>
@@ -75,7 +95,9 @@ class beginner : AppCompatActivity(), HBRecorderListener {
         binding = BeginnerBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportActionBar?.hide()
-
+        println("asked")
+        ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.CAMERA), CAMERA_PERMISSION_CODE)
+        println("after ask")
         //CAMERA PREVIEW
         cameraProviderFuture = ProcessCameraProvider.getInstance(this)
         cameraSelector = CameraSelector.DEFAULT_FRONT_CAMERA
@@ -187,16 +209,15 @@ class beginner : AppCompatActivity(), HBRecorderListener {
 
         //STARTING SCREEN RECORDER AND CAMERA PREVIEW
         hbRecorder = HBRecorder(this, this)
+        hbRecorder!!.setOutputFormat("MPEG_4")
         hbRecorder!!.setVideoEncoder("H264")
+        hbRecorder?.recordHDVideo(false)
         binding.toggle.setOnClickListener{
             if (binding.toggle?.isChecked == true){
                 //first check if permissions was granted
                 if (checkSelfPermission(
                         Manifest.permission.RECORD_AUDIO,
                         PERMISSION_REQ_ID_RECORD_AUDIO
-                    ) && checkSelfPermission(
-                        Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                        PERMISSION_REQ_ID_WRITE_EXTERNAL_STORAGE
                     ) && checkSelfPermission(Manifest.permission.CAMERA, CAMERA_PERMISSION_CODE)
                 ) {
                     hasPermissions = true
@@ -230,6 +251,7 @@ class beginner : AppCompatActivity(), HBRecorderListener {
                         binding.toggle.isChecked = false
                     }
                 }else {
+
                     Translate(this).toastTrad("The app need camera & audio permissions, verify the app configurations")
                     requestPermission()
                     //                    if (requestPermission()[0] != PackageManager.PERMISSION_GRANTED || requestPermission()[1] != PackageManager.PERMISSION_GRANTED || requestPermission()[2] != PackageManager.PERMISSION_GRANTED){
@@ -242,6 +264,14 @@ class beginner : AppCompatActivity(), HBRecorderListener {
                 }
             }else{
                 hbRecorder!!.stopScreenRecording()
+                if (isRecording) {
+                    hbRecorder?.stopScreenRecording()
+                    val intent = Intent(this, ScreenRecordingService::class.java)
+                    stopService(intent)
+                    isRecording = false // Reset the flag
+                } else {
+                    Toast.makeText(this, "No recording in progress", Toast.LENGTH_SHORT).show()
+                }
                 binding.preview?.visibility = View.GONE
                 binding.adView?.visibility = View.VISIBLE
                 binding.adView2?.visibility = View.VISIBLE
@@ -326,6 +356,7 @@ class beginner : AppCompatActivity(), HBRecorderListener {
         super.onStop()
         if (hbRecorder!!.isBusyRecording){
             hbRecorder!!.stopScreenRecording()
+
         }
     }
 
@@ -437,6 +468,7 @@ class beginner : AppCompatActivity(), HBRecorderListener {
     }
 
     override fun HBRecorderOnError(errorCode: Int, reason: String) {
+        print("$errorCode: $reason")
         Toast.makeText(this, "$errorCode: $reason", Toast.LENGTH_SHORT).show()
     }
 
@@ -448,13 +480,13 @@ class beginner : AppCompatActivity(), HBRecorderListener {
         TODO("Not yet implemented")
     }
 
+    private var isRecording = false // Add this variable to track recording state
+
     private fun startRecordingScreen() {
         val mediaProjectionManager =
             getSystemService(MEDIA_PROJECTION_SERVICE) as MediaProjectionManager
         val permissionIntent = mediaProjectionManager?.createScreenCaptureIntent()
-        if (permissionIntent != null) {
-            startActivityForResult(permissionIntent, SCREEN_RECORD_REQUEST_CODE)
-        }
+        startActivityForResult(permissionIntent!!, SCREEN_RECORD_REQUEST_CODE)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -466,6 +498,38 @@ class beginner : AppCompatActivity(), HBRecorderListener {
             }
         }
     }
+
+    private fun startScreenRecordingWithProjection() {
+        if (mediaProjection == null) {
+            // Handle if mediaProjection is not available
+            Toast.makeText(this, "MediaProjection is not available", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        // Create virtual display and start recording
+        virtualDisplay = mediaProjection?.createVirtualDisplay(
+            "ScreenRecord", // Virtual display name
+            resources.displayMetrics.widthPixels,
+            resources.displayMetrics.heightPixels,
+            resources.displayMetrics.densityDpi,
+            DisplayManager.VIRTUAL_DISPLAY_FLAG_AUTO_MIRROR,
+            null, // Recorder surface
+            null, // Callbacks for virtual display
+            null
+        )
+
+        hbRecorder?.startScreenRecording(null, RESULT_OK) // Start recording
+        isRecording = true // Update recording status
+    }
+
+    private fun stopVirtualDisplay() {
+        if (virtualDisplay != null) {
+            virtualDisplay?.release()
+            virtualDisplay = null
+        }
+        mediaProjection?.stop()
+    }
+
 
     //For Android 10> we will pass a Uri to HBRecorder
     //This is not necessary - You can still use getExternalStoragePublicDirectory
@@ -518,7 +582,6 @@ class beginner : AppCompatActivity(), HBRecorderListener {
         Toast.makeText(this,mUri.toString(),Toast.LENGTH_LONG).show()
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     private fun refreshGalleryFile() {
         MediaScannerConnection.scanFile(
             this, arrayOf(hbRecorder!!.filePath), null
@@ -567,6 +630,7 @@ class beginner : AppCompatActivity(), HBRecorderListener {
         private const val PERMISSION_REQ_ID_RECORD_AUDIO = 101
         private const val PERMISSION_REQ_ID_WRITE_EXTERNAL_STORAGE = 102
         private const val CAMERA_PERMISSION_CODE = 103
+        private const val CAMERA_PERMISSION_REQUEST_CODE = 124
     }
     private fun startCameraPreview(){
         // listening for data from the camera
@@ -588,46 +652,66 @@ class beginner : AppCompatActivity(), HBRecorderListener {
 
         }, ContextCompat.getMainExecutor(this))
     }
-    private fun requestPermission(): List<Int> {
+    private fun requestPermission() {
+        val permissionsNeeded = mutableListOf<String>()
+
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.CAMERA)) {
-                //Permission is denied
-                ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.CAMERA), CAMERA_PERMISSION_CODE)
-            } else {
-                //ask permission
-
-            }
+            permissionsNeeded.add(Manifest.permission.CAMERA)
         }
+
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
-                //Permission is denied
-            } else {
-                //ask permission
-                ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE), PERMISSION_REQ_ID_WRITE_EXTERNAL_STORAGE)
-            }
+            permissionsNeeded.add(Manifest.permission.WRITE_EXTERNAL_STORAGE)
         }
+
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
-            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.RECORD_AUDIO)) {
-                //Permission is denied
-                ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.RECORD_AUDIO), PERMISSION_REQ_ID_RECORD_AUDIO)
-            } else {
-                //ask permission
+            permissionsNeeded.add(Manifest.permission.RECORD_AUDIO)
+        }
 
+        if (permissionsNeeded.isNotEmpty()) {
+            // Request all permissions in a single request
+            ActivityCompat.requestPermissions(this, permissionsNeeded.toTypedArray(), CAMERA_PERMISSION_REQUEST_CODE)
+        } else {
+            hasPermissions = true // All permissions have already been granted
+        }
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+
+        if (requestCode == CAMERA_PERMISSION_REQUEST_CODE) {
+            if (grantResults.isNotEmpty() && grantResults.all { it == PackageManager.PERMISSION_GRANTED }) {
+                hasPermissions = true
+                Toast.makeText(this, "All permissions granted!", Toast.LENGTH_SHORT).show()
+                // Start your camera or recording functionality here
+            } else {
+                hasPermissions = false
+                Toast.makeText(this, "Camera, audio, and storage permissions are required.", Toast.LENGTH_LONG).show()
             }
         }
-        return listOf(ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO),ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE),ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA))
     }
-    fun shareVideo(filePath:String) {
 
+
+    fun shareVideo(filePath: String) {
         val videoFile = File(filePath)
-        val videoURI = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N)
-            FileProvider.getUriForFile(this,BuildConfig.APPLICATION_ID + ".fileprovider", videoFile) //baseContext.packageName
-        else
+        println(Build.VERSION.CODENAME)
+
+        val videoURI = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            FileProvider.getUriForFile(this, BuildConfig.APPLICATION_ID + ".fileprovider", videoFile)
+        } else {
             Uri.fromFile(videoFile)
-        ShareCompat.IntentBuilder.from(this)
-            .setStream(videoURI)
-            .setType("video/mp4")
-            .setChooserTitle("Share your video to social media")
-            .startChooser()
+        }
+
+        val shareIntent = Intent(Intent.ACTION_SEND).apply {
+            type = "video/mp4"
+            putExtra(Intent.EXTRA_STREAM, videoURI)
+            addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+        }
+
+        startActivity(Intent.createChooser(shareIntent, "Share your video to social media"))
     }
+
 }

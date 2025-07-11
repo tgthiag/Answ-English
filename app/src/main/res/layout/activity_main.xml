@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,6 +8,7 @@
     android:background="@drawable/background"
     tools:context="AnsweringAPP.activities.MainActivity">
 
+    <!-- Share Button with Shadow -->
     <TextView
         android:id="@+id/btShare"
         android:layout_width="wrap_content"
@@ -14,16 +16,23 @@
         android:clickable="true"
         android:focusable="true"
         android:gravity="end"
-        android:translationZ="90dp"
         android:padding="5dp"
         android:text="Share"
         android:textColor="@color/white"
-        android:textSize="22sp"
+        android:textSize="18sp"
         android:textStyle="bold"
+        android:elevation="8dp"
+        android:shadowColor="@color/black"
+        android:shadowDx="1"
+        android:shadowDy="1"
+        android:shadowRadius="3"
         app:drawableEndCompat="@drawable/share"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="10dp" />
 
+    <!-- Settings Button with Shadow -->
     <TextView
         android:id="@+id/btSettings"
         android:layout_width="wrap_content"
@@ -31,45 +40,57 @@
         android:clickable="true"
         android:focusable="true"
         android:gravity="end"
-        android:translationZ="90dp"
         android:padding="5dp"
         android:text="@string/configuration"
         android:textColor="@color/white"
-        android:textSize="22sp"
+        android:textSize="18sp"
         android:textStyle="bold"
+        android:elevation="8dp"
+        android:shadowColor="@color/black"
+        android:shadowDx="1"
+        android:shadowDy="1"
+        android:shadowRadius="3"
         app:drawableEndCompat="@drawable/config"
         app:layout_constraintBottom_toBottomOf="@+id/logo"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="10dp" />
 
+    <!-- Rounded Image Logo -->
     <ImageView
         android:id="@+id/logo"
-        android:layout_width="match_parent"
-        android:layout_height="205dp"
-        android:scaleType="fitXY"
-        android:src="@drawable/logo"
+        android:layout_height="200dp"
+        android:layout_marginTop="20dp"
         android:contentDescription="@string/a_guy_sitting_in_a_big_interrogation_mark"
+        android:scaleType="centerCrop"
+        android:src="@drawable/logo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"  android:layout_width="match_parent"/>
 
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
         android:background="@drawable/container_components"
         android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/logo">
 
+        <!-- App Name with Smaller Text Size -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@string/app_name"
             android:textColor="@color/white"
-            android:textSize="38sp"
+            android:textSize="32sp"
             android:textStyle="bold" />
 
+        <!-- Subtitle with Smaller Text Size -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -77,8 +98,9 @@
             android:gravity="center"
             android:text="@string/subtitle"
             android:textColor="@color/white"
-            android:textSize="24sp" />
+            android:textSize="20sp" />
 
+        <!-- First Level Button -->
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/bt_aboutYou"
             style="@style/bt_inicial"
@@ -91,6 +113,7 @@
             android:text="@string/firstLevel"
             android:textAllCaps="false" />
 
+        <!-- Second Level Button -->
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/bt_everyDayThings"
             style="@style/bt_inicial"
@@ -103,6 +126,7 @@
             android:text="@string/secondLevel"
             android:textAllCaps="false" />
 
+        <!-- Third Level Button -->
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/bt_jobInterview"
             style="@style/bt_inicial"
@@ -115,6 +139,7 @@
             android:text="@string/thirdLevel"
             android:textAllCaps="false" />
 
+        <!-- All Levels Button -->
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/allQuestions"
             style="@style/bt_inicial"
@@ -126,9 +151,9 @@
             android:layout_marginBottom="10dp"
             android:text="@string/allLevels"
             android:textAllCaps="false" />
-
     </LinearLayout>
 
+    <!-- Ad Banner -->
     <com.google.android.gms.ads.AdView
         android:id="@+id/adView"
         android:layout_width="wrap_content"
@@ -139,6 +164,4 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -31,7 +31,13 @@ class SettingsScreen : AppCompatActivity() {
             binding.timeAllquestions)
 
         binding.btApply.setOnClickListener {
-            if (binding.timeBeginner.text.isNotEmpty() && binding.timeInterm.text.isNotEmpty() && binding.timeAdvanc.text.isNotEmpty() && binding.timeBeginInterm.text.isNotEmpty()&& binding.timeAllquestions.text.isNotEmpty()) {
+            val beginner = binding.timeBeginner.text?.toString().orEmpty()
+            val interm = binding.timeInterm.text?.toString().orEmpty()
+            val advanc = binding.timeAdvanc.text?.toString().orEmpty()
+            val beginInterm = binding.timeBeginInterm.text?.toString().orEmpty()
+            val allQuestions = binding.timeAllquestions.text?.toString().orEmpty()
+
+            if (beginner.isNotEmpty() && interm.isNotEmpty() && advanc.isNotEmpty() && beginInterm.isNotEmpty() && allQuestions.isNotEmpty()) {
                 updateTime(db, binding.timeBeginner, binding.timeInterm, binding.timeAdvanc, binding.timeBeginInterm, binding.timeAllquestions)
             }else{Toast.makeText(this,"Insert a value",Toast.LENGTH_SHORT).show()}
         }
@@ -44,11 +50,11 @@ class SettingsScreen : AppCompatActivity() {
         val selectQuery = "SELECT * FROM $TABLE_NAME;"
         val cursor = db.rawQuery(selectQuery, null)
         cursor.moveToFirst()
-        cv.put(TM_BASIC,edTx1.text.toString())
-        cv.put(TM_INTERM, edTx2.text.toString())
-        cv.put(TM_ADVANC, edTx3.text.toString())
-        cv.put(TM_BEG_INTERM, edTx4.text.toString())
-        cv.put(TM_ALLQUESTIONS, edTx5.text.toString())
+        cv.put(TM_BASIC, edTx1.text?.toString().orEmpty())
+        cv.put(TM_INTERM, edTx2.text?.toString().orEmpty())
+        cv.put(TM_ADVANC, edTx3.text?.toString().orEmpty())
+        cv.put(TM_BEG_INTERM, edTx4.text?.toString().orEmpty())
+        cv.put(TM_ALLQUESTIONS, edTx5.text?.toString().orEmpty())
         db.update(TABLE_NAME,cv, null, null)
         Toast.makeText(this,"Sucess",Toast.LENGTH_SHORT).show()
         cursor.close()

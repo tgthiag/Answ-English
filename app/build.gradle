@@ -6,20 +6,20 @@ configurations {
     all*.exclude group: 'com.google.guava', module: 'listenablefuture'
 }
 android {
-    compileSdk 34
+    compileSdk 36
 
     defaultConfig {
         applicationId "com.answering"
         minSdk 23
-        targetSdk 34
+        targetSdk 36
         versionCode 21
         versionName "3.9"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildFeatures{
-
         viewBinding true
+        buildConfig true
     }
 
 

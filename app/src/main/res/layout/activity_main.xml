@@ -27,10 +27,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="32dp"
                 android:layout_marginEnd="20dp"
                 app:cardBackgroundColor="@android:color/transparent"
-                app:cardCornerRadius="24dp"
+                app:cardCornerRadius="28dp"
                 app:cardElevation="0dp"
                 app:strokeColor="@color/white"
                 app:strokeWidth="1dp">
@@ -38,46 +38,48 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="20dp">
+                    android:background="@drawable/bg_header_gradient"
+                    android:clipToPadding="false"
+                    android:paddingStart="24dp"
+                    android:paddingTop="28dp"
+                    android:paddingEnd="24dp"
+                    android:paddingBottom="32dp">
 
-                    <androidx.appcompat.widget.AppCompatButton
+                    <androidx.appcompat.widget.AppCompatImageButton
                         android:id="@+id/btSettings"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/configuration"
-                        android:textAllCaps="false"
-                        android:textColor="@color/white"
-                        android:background="@drawable/button_outline"
-                        android:drawableStart="@drawable/config"
-                        android:drawableTint="@color/white"
-                        android:drawablePadding="8dp"
-                        android:paddingStart="16dp"
-                        android:paddingEnd="16dp"
+                        android:layout_width="44dp"
+                        android:layout_height="44dp"
+                        android:background="@drawable/bg_icon_button"
+                        android:contentDescription="@string/configuration"
+                        android:padding="10dp"
+                        android:scaleType="center"
+                        app:srcCompat="@drawable/config"
+                        app:tint="@color/white"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <androidx.appcompat.widget.AppCompatButton
+                    <androidx.appcompat.widget.AppCompatImageButton
                         android:id="@+id/btShare"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/button_outline"
-                        android:drawableStart="@drawable/share"
-                        android:drawableTint="@color/white"
-                        android:drawablePadding="8dp"
-                        android:paddingStart="16dp"
-                        android:paddingEnd="16dp"
-                        android:text="@string/share"
-                        android:textAllCaps="false"
-                        android:textColor="@color/white"
+                        android:layout_width="44dp"
+                        android:layout_height="44dp"
+                        android:background="@drawable/bg_icon_button"
+                        android:contentDescription="@string/share"
+                        android:padding="10dp"
+                        android:scaleType="center"
+                        app:srcCompat="@drawable/share"
+                        app:tint="@color/white"
+                        app:layout_constraintBaseline_toBaselineOf="@id/btSettings"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <ImageView
                         android:id="@+id/logo"
-                        android:layout_width="120dp"
-                        android:layout_height="120dp"
-                        android:layout_marginTop="16dp"
+                        android:layout_width="140dp"
+                        android:layout_height="140dp"
+                        android:layout_marginTop="24dp"
+                        android:background="@drawable/bg_logo_badge"
                         android:contentDescription="@string/a_guy_sitting_in_a_big_interrogation_mark"
+                        android:padding="24dp"
                         android:scaleType="centerCrop"
                         android:src="@drawable/logo"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -92,8 +94,9 @@
                         android:gravity="center"
                         android:text="@string/app_name"
                         android:textColor="@color/white"
-                        android:textSize="28sp"
+                        android:textSize="30sp"
                         android:textStyle="bold"
+                        android:letterSpacing="0.05"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/logo" />
@@ -103,14 +106,28 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:layout_marginBottom="4dp"
+                        android:layout_marginBottom="8dp"
                         android:gravity="center"
                         android:text="@string/subtitle"
                         android:textColor="@color/white"
                         android:textSize="16sp"
+                        android:letterSpacing="0.02"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/appTitle" />
+
+                    <TextView
+                        android:id="@+id/appValueProp"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="@string/value_proposition"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        android:alpha="0.85"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/appSubtitle" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </com.google.android.material.card.MaterialCardView>

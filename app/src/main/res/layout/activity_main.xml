@@ -100,6 +100,14 @@
                     android:background="@drawable/bg_hero_card"
                     android:padding="24dp">
 
+                    <!-- Guideline: gives a percent-based split between text (left) and image (right) -->
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guideline_vertical_70"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent="0.70" />
+
                     <com.google.android.material.chip.Chip
                         android:id="@+id/hero_chip"
                         android:layout_width="wrap_content"
@@ -130,7 +138,9 @@
                         android:textColor="@color/home_text_primary"
                         android:textSize="32sp"
                         android:textStyle="bold"
-                        app:layout_constraintEnd_toStartOf="@id/logo"
+                        android:maxLines="2"
+                        android:ellipsize="end"
+                        app:layout_constraintEnd_toStartOf="@id/guideline_vertical_70"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/hero_chip" />
 
@@ -143,7 +153,9 @@
                         android:text="@string/subtitle"
                         android:textColor="@color/home_text_secondary"
                         android:textSize="16sp"
-                        app:layout_constraintEnd_toStartOf="@id/logo"
+                        android:maxLines="2"
+                        android:ellipsize="end"
+                        app:layout_constraintEnd_toStartOf="@id/guideline_vertical_70"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/appTitle" />
 
@@ -157,22 +169,29 @@
                         android:textColor="@color/home_text_primary"
                         android:textSize="14sp"
                         android:alpha="0.9"
-                        app:layout_constraintBottom_toBottomOf="@id/logo"
-                        app:layout_constraintEnd_toStartOf="@id/logo"
+                        android:maxLines="6"
+                        android:ellipsize="end"
+                        app:layout_constraintEnd_toStartOf="@id/guideline_vertical_70"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/appSubtitle" />
+                        app:layout_constraintTop_toBottomOf="@id/appSubtitle"
+                        app:layout_constraintBottom_toBottomOf="parent" />
 
                     <ImageView
                         android:id="@+id/logo"
-                        android:layout_width="150dp"
-                        android:layout_height="150dp"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
                         android:layout_marginStart="16dp"
                         android:contentDescription="@string/a_guy_sitting_in_a_big_interrogation_mark"
-                        android:scaleType="centerInside"
+                        android:scaleType="centerCrop"
+                        android:adjustViewBounds="true"
                         android:src="@drawable/logo"
-                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/guideline_vertical_70"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintWidth_percent="0.30"
+                        app:layout_constraintDimensionRatio="1:1" />
+
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </com.google.android.material.card.MaterialCardView>
 

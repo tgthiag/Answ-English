@@ -20,4 +20,22 @@
     <color name="gray">#575555</color>
     <color name="whitetxt">#FFFFFF</color>
     <color name="transparent">#00FFFFFF</color>
+    <color name="home_background_start">#050914</color>
+    <color name="home_background_mid">#0B1430</color>
+    <color name="home_background_end">#111F3E</color>
+    <color name="home_card_surface">#15203D</color>
+    <color name="home_card_stroke">#33FFFFFF</color>
+    <color name="home_text_primary">#FFFFFFFF</color>
+    <color name="home_text_secondary">#C2CAE5</color>
+    <color name="home_toolbar_button_bg">#232F52</color>
+    <color name="home_toolbar_button_text">#F2F5FF</color>
+    <color name="home_toolbar_button_icon">#F2F5FF</color>
+    <color name="home_chip_background">#1E2C54</color>
+    <color name="home_chip_text">#CAD4FF</color>
+    <color name="home_chip_stroke">#33486EF5</color>
+    <color name="home_arrow_tint">#F7F9FF</color>
+    <color name="level_basic">#FF9A3D</color>
+    <color name="level_intermediate">#34D2A3</color>
+    <color name="level_advanced">#7A62FF</color>
+    <color name="level_random">#FF5D8F</color>
 </resources>

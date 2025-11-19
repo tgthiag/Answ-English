@@ -6,7 +6,7 @@ import android.content.DialogInterface
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.TextView
-import com.AnsweringAPP.R
+import com.answering.R
 
 class popup {
     private lateinit var alertDialog: AlertDialog

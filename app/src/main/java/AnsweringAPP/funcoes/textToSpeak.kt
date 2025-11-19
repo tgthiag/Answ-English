@@ -5,7 +5,7 @@ import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.speech.tts.TextToSpeech
 import android.widget.*
-import com.AnsweringAPP.R
+import com.answering.R
 import AnsweringAPP.activities.beginner
 import AnsweringAPP.dados.COINS
 import AnsweringAPP.dados.TABLE_NAME

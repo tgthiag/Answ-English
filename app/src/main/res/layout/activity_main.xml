@@ -102,7 +102,6 @@
 
                     <com.google.android.material.chip.Chip
                         android:id="@+id/hero_chip"
-                        style="@style/Widget.MaterialComponents.Chip.Assist"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:checkable="false"

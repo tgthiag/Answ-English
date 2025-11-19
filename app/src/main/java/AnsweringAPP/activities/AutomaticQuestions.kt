@@ -2,7 +2,7 @@ package AnsweringAPP.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.AnsweringAPP.databinding.ActivityAutomaticQuestionsBinding
+import com.answering.databinding.ActivityAutomaticQuestionsBinding
 
 private lateinit var binding : ActivityAutomaticQuestionsBinding
 class AutomaticQuestions : AppCompatActivity() {

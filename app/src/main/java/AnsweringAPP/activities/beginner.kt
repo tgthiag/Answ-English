@@ -53,9 +53,9 @@ import androidx.core.app.ActivityCompat
 import androidx.core.app.ShareCompat
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
-import com.AnsweringAPP.BuildConfig
-import com.AnsweringAPP.R
-import com.AnsweringAPP.databinding.BeginnerBinding
+import com.answering.BuildConfig
+import com.answering.R
+import com.answering.databinding.BeginnerBinding
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdView
 import com.google.android.gms.ads.LoadAdError
@@ -158,7 +158,7 @@ class beginner : AppCompatActivity(), HBRecorderListener {
         }else{binding.txtUsingApp?.text = getString(R.string.first_day)}
 
         //Traduzindo botões e widgets para o idioma do User, caso não existam traduções disponíveis
-        Translate(this).translateButtons(binding.btReward, binding.btAutomatic, binding.checkDicas,
+        Translate(this).translateButtons(binding.btReward as Button, binding.btAutomatic as Button, binding.checkDicas,
             binding.playquestion, binding.playhint, binding.txtUsingApp
         )
 
@@ -203,7 +203,7 @@ class beginner : AppCompatActivity(), HBRecorderListener {
 
         //==========INICIANDO FUNÇÕES DA TELA DE PERGUNTAS===============
         textToSpeak.TTS(this,selectedLevel, binding.cxTexto, binding.cxHint,applicationContext, binding.playquestion,
-            binding.playhint, binding.checkDicas, binding.btFront, binding.btBack, binding.btAutomatic,db,timer,
+            binding.playhint, binding.checkDicas, binding.btFront, binding.btBack, binding.btAutomatic as Button,db,timer,
             binding.cxTradQ,
             binding.cxTradH)
 

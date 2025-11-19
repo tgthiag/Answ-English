@@ -1,7 +1,7 @@
 package AnsweringAPP.dados
 
 import android.content.Context
-import com.AnsweringAPP.R
+import com.answering.R
 
 class Questions(ctx: Context) {
     var Basic = arrayOf<List<String>>(

@@ -10,7 +10,7 @@ import android.widget.Toast
 import AnsweringAPP.activities.beginner
 import AnsweringAPP.dados.COINS
 import AnsweringAPP.dados.TABLE_NAME
-import com.AnsweringAPP.R
+import com.answering.R
 import com.google.android.gms.ads.*
 import com.google.android.gms.ads.rewarded.RewardItem
 import com.google.android.gms.ads.rewarded.RewardedAd

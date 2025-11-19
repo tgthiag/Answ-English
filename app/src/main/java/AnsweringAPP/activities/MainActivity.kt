@@ -8,9 +8,10 @@ import AnsweringAPP.funcoes.Translate
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
 import androidx.core.app.ShareCompat
-import com.AnsweringAPP.R
-import com.AnsweringAPP.databinding.ActivityMainBinding
+import com.answering.R
+import com.answering.databinding.ActivityMainBinding
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.MobileAds
 

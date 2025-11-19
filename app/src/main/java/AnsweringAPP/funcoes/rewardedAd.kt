@@ -52,7 +52,7 @@ fun  showAd(ctx : Activity, db : SQLiteDatabase) {
                 Log.d(TAG, "Ad was shown.")
             }
 
-            override fun onAdFailedToShowFullScreenContent(adError: AdError?) {
+            override fun onAdFailedToShowFullScreenContent(p0: AdError) {
                 // Called when ad fails to show.
                 Log.d(TAG, "Ad failed to show.")
             }

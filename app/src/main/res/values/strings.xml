@@ -18,6 +18,7 @@
     <string name="coin">Coins</string>
     <string name="a_guy_sitting_in_a_big_interrogation_mark">A guy sitting in a big interrogation mark.</string>
     <string name="configuration">Settings</string>
+    <string name="choose_your_level">Choose your level</string>
     <string name="time_between_each_question_automatic">Time between each question (Automatic):</string>
     <string name="all_questions">All questions</string>
     <string name="beginner_intermediate">Beginner + Intermediate</string>

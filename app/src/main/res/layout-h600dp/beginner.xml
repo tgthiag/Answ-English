@@ -81,13 +81,13 @@
                 android:id="@+id/txt_moedas"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:drawableStart="@drawable/coin"
                 android:text=""
                 android:textColor="@color/white"
                 android:layout_gravity="center"
                 android:padding="13dp"
-                android:textSize="14dp"
-                style="@style/ContainerComponents"/>
+                android:textSize="14sp"
+                style="@style/ContainerComponents"
+                app:drawableStartCompat="@drawable/coin" />
         </LinearLayout>
 
         <androidx.core.widget.NestedScrollView
@@ -212,6 +212,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:textColor="@color/white"
+                android:textSize="12sp"
+                android:textAllCaps="false"
                 android:drawableTop="@drawable/ic_videocam"
                 android:textOn="@string/auto_desligar"
                 android:textOff="@string/auto_ligar"

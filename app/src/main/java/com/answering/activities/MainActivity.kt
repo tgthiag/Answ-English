@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
 
         if (isFirstAcess == 0){
             try {
-                DialogShow().firstDialog(this)
+                DialogShow().firstDialog(this, db)
             }catch (e : Exception){
                 print("error")}
         }

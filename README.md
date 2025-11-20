@@ -79,3 +79,19 @@ Ver [copilot.md](./copilot.md) seção "Problemas Conhecidos Restantes"
 
 Desenvolvido com ❤️ para estudantes de inglês
 
+- O log que você mandou mostra apenas .\gradlew.bat
+  assembleDebug --stacktrace. Esse alvo gera o APK (app/build/
+  outputs/apk/debug/app-debug.apk). Nenhum .aab foi criado (não
+  há nada em app/build/outputs/bundle/).
+    - Para gerar o bundle da Play Store você precisa rodar .
+      \gradlew.bat bundleRelease --stacktrace (ou bundleDebug se
+      quiser só testar). O arquivo sai em app/build/outputs/bundle/
+      release/app-release.aab.
+    - Para salvar o log exatamente nesse arquivo use o
+      redirecionamento do PowerShell:
+
+      .\gradlew.bat bundleRelease --stacktrace *>&1 | Tee-
+      Object "C:\Users\Kabum\Downloads\KabumDEVKotlinAnsw-
+      English .gradlew.txt"
+      (substitua bundleRelease por qualquer outra task se precisar
+      outro alvo).

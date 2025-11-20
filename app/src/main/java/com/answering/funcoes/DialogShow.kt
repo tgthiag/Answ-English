@@ -14,99 +14,96 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import com.answering.R
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import java.util.*
 
+class DialogShow {
 
-class DialogShow() {
+    private fun idString(ctx: Context, name: String) = ctx.resources.getIdentifier(name, "string", ctx.packageName)
+    private fun idLayout(ctx: Context, name: String) = ctx.resources.getIdentifier(name, "layout", ctx.packageName)
+    private fun idStyle(ctx: Context, name: String) = ctx.resources.getIdentifier(name, "style", ctx.packageName)
+    private fun idColor(ctx: Context, name: String) = ctx.resources.getIdentifier(name, "color", ctx.packageName)
+    private fun idView(ctx: Context, name: String) = ctx.resources.getIdentifier(name, "id", ctx.packageName)
 
-    fun AlertDialog(ctx : Context) {
-        Translate(ctx).traduzir_pergunta.translate(
-            "You've started with some coins!\n\nYou will earn 2 coin every day that you open the app.\n\nCoins are used for video recording and to automatize the questions.\n\n" +
-                    "You can earn 3 coins by watching a video anytime.\n\nUse the automatize button to answer questions while doing your everyday things.\n\n" +
-                    "Start recording videos to share on your WhatsApp, Facebook and Instagram posts, as soon as you click the camera button, it will start, tap the blue arrows for next question.\n\nEvery level has different questions, try it!"
-        ).addOnSuccessListener {
-            val formatted = formatParagraphs(it)
-            showInfoDialog(
-                ctx = ctx,
-                title = ctx.getString(R.string.dialog_coins_title),
-                body = formatted
-            )
-        }
+    fun AlertDialog(ctx: Context) {
+        val source = "You've started with some coins!\n\nYou will earn 2 coin every day that you open the app.\n\nCoins are used for video recording and to automatize the questions.\n\n" +
+                "You can earn 3 coins by watching a video anytime.\n\nUse the automatize button to answer questions while doing your everyday things.\n\n" +
+                "Start recording videos to share on your WhatsApp, Facebook and Instagram posts, as soon as you click the camera button, it will start, tap the blue arrows for next question.\n\nEvery level has different questions, try it!"
+        Translate(ctx).traduzir_pergunta.translate(source)
+            .addOnSuccessListener { translated ->
+                showInfoDialog(
+                    ctx,
+                    ctx.getString(idString(ctx, "dialog_coins_title")),
+                    formatParagraphs(translated)
+                )
+            }
+            .addOnFailureListener {
+                showInfoDialog(
+                    ctx,
+                    ctx.getString(idString(ctx, "dialog_coins_title")),
+                    formatParagraphs(source)
+                )
+            }
     }
-    fun DialogCustom(ctx : Context,str: String) {
-        Translate(ctx).traduzir_pergunta.translate(
-            str
-        ).addOnSuccessListener {
-            val formatted = formatParagraphs(it)
-            showInfoDialog(
-                ctx = ctx,
-                title = null,
-                body = formatted
-            )
-        }
+
+    fun DialogCustom(ctx: Context, bodyOriginal: String) {
+        Translate(ctx).traduzir_pergunta.translate(bodyOriginal)
+            .addOnSuccessListener { translated ->
+                showInfoDialog(ctx, null, formatParagraphs(translated))
+            }
+            .addOnFailureListener {
+                showInfoDialog(ctx, null, formatParagraphs(bodyOriginal))
+            }
     }
-    fun DialogReview(ctx : Context,db : SQLiteDatabase,str: String) {
-        Translate(ctx).traduzir_pergunta.translate(
-            str
-        ).addOnSuccessListener {
-            val listItems = arrayOf("Yes, I love it!", "No I didn't like it.")
-            val mBuilder = MaterialAlertDialogBuilder(ctx, R.style.AppDialogTheme)
-            mBuilder.setTitle(it)
-            mBuilder.setSingleChoiceItems(listItems, -1) { dialogInterface, i ->
-//                Translate(ctx).toastTrad("Thank you so much! We are happy to know!")
-                if (listItems[i] == "Yes, I love it!"){
+
+    fun DialogReview(ctx: Context, db: SQLiteDatabase, titleOriginal: String) {
+        Translate(ctx).traduzir_pergunta.translate(titleOriginal)
+            .addOnSuccessListener { titleTranslated ->
+                buildReviewDialog(ctx, db, titleTranslated)
+            }
+            .addOnFailureListener {
+                buildReviewDialog(ctx, db, titleOriginal)
+            }
+    }
+
+    private fun buildReviewDialog(ctx: Context, db: SQLiteDatabase, title: String) {
+        val listItems = arrayOf("Yes, I love it!", "No I didn't like it.")
+        val builder = MaterialAlertDialogBuilder(ctx, idStyle(ctx, "AppDialogTheme")).setTitle(title)
+            .setSingleChoiceItems(listItems, -1) { dialogInterface, i ->
+                val positive = listItems[i] == "Yes, I love it!"
+                if (positive) {
                     Translate(ctx).toastTrad("Thank you so much! We are happy to know!")
                     inAppReview().call(ctx)
-                    val selectQuery = "SELECT * FROM $TABLE_NAME;"
-                    val cursor = db.rawQuery(selectQuery, null)
-                    cursor.moveToFirst()
-                    val usedTheApp = cursor.getString(4).toInt()
-                    val cv = ContentValues()
-                    val updateUseReview = usedTheApp + 1
-                    cv.put(FIRSTACESS,updateUseReview)
-                    db.update(TABLE_NAME,cv,null,null)
-                    cursor.close()
-                    dialogInterface.cancel()
-                }else{
+                } else {
                     Translate(ctx).toastTrad("Sorry, we are working to give you a better experience")
-                    val selectQuery = "SELECT * FROM $TABLE_NAME;"
-                    val cursor = db.rawQuery(selectQuery, null)
-                    cursor.moveToFirst()
-                    val usedTheApp = cursor.getString(4).toInt()
-                    val cv = ContentValues()
-                    val updateUseReview = usedTheApp + 1
-                    cv.put(FIRSTACESS,updateUseReview)
-                    db.update(TABLE_NAME,cv,null,null)
-                    cursor.close()
-                    dialogInterface.cancel()
                 }
+                val cursor = db.rawQuery("SELECT * FROM $TABLE_NAME;", null)
+                cursor.moveToFirst()
+                val usedTheApp = cursor.getString(4).toInt()
+                val cv = ContentValues().apply { put(FIRSTACESS, usedTheApp + 1) }
+                db.update(TABLE_NAME, cv, null, null)
+                cursor.close()
                 dialogInterface.dismiss()
             }
-            // Set the neutral/cancel button click listener
-            mBuilder.setNeutralButton("Close") { dialog, _ ->
-                // Do something when click the neutral button
-                dialog.cancel()
-            }
-
-            val mDialog = mBuilder.create()
-            mDialog.show()
-        }
+            .setNeutralButton(ctx.getString(idString(ctx, "dialog_ok"))) { dialog, _ -> dialog.dismiss() }
+        builder.show()
     }
-    fun firstDialog(ctx : Context) {
-        val subtitle = ctx.getString(R.string.dialog_first_subtitle)
-        val tips = ctx.getString(R.string.dialog_first_tips)
+
+    fun firstDialog(ctx: Context, db: SQLiteDatabase) {
+        val subtitle = ctx.getString(idString(ctx, "dialog_first_subtitle"))
+        val tips = ctx.getString(idString(ctx, "dialog_first_tips"))
         val body = "$subtitle\n\n$tips"
         showInfoDialog(
-            ctx = ctx,
-            title = ctx.getString(R.string.dialog_first_title),
-            body = body
+            ctx,
+            ctx.getString(idString(ctx, "dialog_first_title")),
+            body
         )
+        val cv = ContentValues().apply { put(FIRSTACESS, 1) }
+        db.update(TABLE_NAME, cv, null, null)
     }
 
     private fun showInfoDialog(ctx: Context, title: CharSequence?, body: CharSequence) {
-        val dialogView = LayoutInflater.from(ctx).inflate(R.layout.dialog_info, null, false)
-        val titleView = dialogView.findViewById<TextView>(R.id.dialogTitle)
-        val messageView = dialogView.findViewById<TextView>(R.id.dialogMessage)
+        val dialogView = LayoutInflater.from(ctx).inflate(idLayout(ctx, "dialog_info"), null, false)
+        val titleView = dialogView.findViewById<TextView>(idView(ctx, "dialogTitle"))
+        val messageView = dialogView.findViewById<TextView>(idView(ctx, "dialogMessage"))
 
         if (title.isNullOrBlank()) {
             titleView.visibility = View.GONE
@@ -116,20 +113,15 @@ class DialogShow() {
         }
         messageView.text = body
 
-        val dialog = MaterialAlertDialogBuilder(ctx, R.style.AppDialogTheme)
+        val dialog = AlertDialog.Builder(ctx)
             .setView(dialogView)
-            .setPositiveButton(R.string.dialog_ok) { dialogInterface, _ ->
+            .setPositiveButton("OK") { dialogInterface, _ ->
                 dialogInterface.dismiss()
             }
             .create()
-        dialog.setOnShowListener {
-            dialog.getButton(AlertDialog.BUTTON_POSITIVE)
-                ?.setTextColor(ContextCompat.getColor(ctx, R.color.level_intermediate))
-        }
         dialog.show()
     }
 
-    private fun formatParagraphs(text: String): String {
-        return text.replace("! ", "! \n\n").replace(". ", ". \n\n")
-    }
+    private fun formatParagraphs(text: String): String =
+        text.replace("! ", "! \n\n").replace(". ", ". \n\n")
 }

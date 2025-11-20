@@ -18,6 +18,7 @@ import com.answering.funcoes.rewardedAd
 import com.answering.funcoes.textToSpeak
 import android.Manifest
 import android.app.Activity
+import android.app.AlertDialog
 import android.content.ContentResolver
 import android.content.ContentValues
 import android.content.Context
@@ -143,8 +144,30 @@ class beginner : AppCompatActivity(), HBRecorderListener {
 
         //========BT-AD-REWARD========
         binding.btReward.setOnClickListener {
-            rewardedAd().showAd(this,db)
-            loadCoins(this,db)
+            val ctx = this
+            val dbRef = db
+            val dialogText = "Você pode ganhar 3 moedas assistindo a um vídeo. Deseja prosseguir e assistir ao anúncio?"
+            Translate(ctx).traduzir_pergunta.translate(dialogText)
+                .addOnSuccessListener { translated ->
+                    AlertDialog.Builder(ctx)
+                        .setMessage(translated)
+                        .setPositiveButton("OK") { _, _ ->
+                            rewardedAd().showAd(ctx, dbRef)
+                            loadCoins(ctx, dbRef)
+                        }
+                        .setNegativeButton("Cancelar", null)
+                        .show()
+                }
+                .addOnFailureListener {
+                    AlertDialog.Builder(ctx)
+                        .setMessage(dialogText)
+                        .setPositiveButton("OK") { _, _ ->
+                            rewardedAd().showAd(ctx, dbRef)
+                            loadCoins(ctx, dbRef)
+                        }
+                        .setNegativeButton("Cancelar", null)
+                        .show()
+                }
         }
 
         //Chamando texto "days using" na record screen.

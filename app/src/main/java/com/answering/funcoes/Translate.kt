@@ -1,4 +1,4 @@
-package AnsweringAPP.funcoes
+package com.answering.funcoes
 
 import android.content.Context
 import android.telephony.TelephonyManager

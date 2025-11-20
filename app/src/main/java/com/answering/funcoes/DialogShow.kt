@@ -1,15 +1,15 @@
-package AnsweringAPP.funcoes
+package com.answering.funcoes
 
-import AnsweringAPP.dados.FIRSTACESS
-import AnsweringAPP.dados.TABLE_NAME
+import com.answering.dados.FIRSTACESS
+import com.answering.dados.TABLE_NAME
+import com.answering.funcoes.inAppReview
+import com.answering.funcoes.Translate
 import android.content.ContentValues
 import android.content.Context
-import android.content.DialogInterface
 import android.database.sqlite.SQLiteDatabase
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import com.answering.R
@@ -58,32 +58,32 @@ class DialogShow() {
                     Translate(ctx).toastTrad("Thank you so much! We are happy to know!")
                     inAppReview().call(ctx)
                     val selectQuery = "SELECT * FROM $TABLE_NAME;"
-                    var cursoress = db.rawQuery(selectQuery, null)
-                    cursoress.moveToFirst()
-                    var usedTheApp = cursoress.getString(4).toInt()
-                    var moedas = cursoress.getString(2).toInt()
-                    var cv = ContentValues()
-                    var updateUseReview = usedTheApp + 1
+                    val cursor = db.rawQuery(selectQuery, null)
+                    cursor.moveToFirst()
+                    val usedTheApp = cursor.getString(4).toInt()
+                    val cv = ContentValues()
+                    val updateUseReview = usedTheApp + 1
                     cv.put(FIRSTACESS,updateUseReview)
                     db.update(TABLE_NAME,cv,null,null)
+                    cursor.close()
                     dialogInterface.cancel()
                 }else{
                     Translate(ctx).toastTrad("Sorry, we are working to give you a better experience")
                     val selectQuery = "SELECT * FROM $TABLE_NAME;"
-                    var cursoress = db.rawQuery(selectQuery, null)
-                    cursoress.moveToFirst()
-                    var usedTheApp = cursoress.getString(4).toInt()
-                    var moedas = cursoress.getString(2).toInt()
-                    var cv = ContentValues()
-                    var updateUseReview = usedTheApp + 1
+                    val cursor = db.rawQuery(selectQuery, null)
+                    cursor.moveToFirst()
+                    val usedTheApp = cursor.getString(4).toInt()
+                    val cv = ContentValues()
+                    val updateUseReview = usedTheApp + 1
                     cv.put(FIRSTACESS,updateUseReview)
                     db.update(TABLE_NAME,cv,null,null)
+                    cursor.close()
                     dialogInterface.cancel()
                 }
                 dialogInterface.dismiss()
             }
             // Set the neutral/cancel button click listener
-            mBuilder.setNeutralButton("Close") { dialog, which ->
+            mBuilder.setNeutralButton("Close") { dialog, _ ->
                 // Do something when click the neutral button
                 dialog.cancel()
             }
@@ -133,4 +133,3 @@ class DialogShow() {
         return text.replace("! ", "! \n\n").replace(". ", ". \n\n")
     }
 }
-

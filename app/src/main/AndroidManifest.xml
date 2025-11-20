@@ -30,7 +30,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Answering">
         <activity
-            android:name="AnsweringAPP.activities.AutomaticQuestions"
+            android:name="com.answering.activities.AutomaticQuestions"
             android:exported="false" />
 
         <provider
@@ -44,17 +44,17 @@
         </provider>
 
         <activity
-            android:name="AnsweringAPP.activities.SettingsScreen"
+            android:name="com.answering.activities.SettingsScreen"
             android:exported="false"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" /> <!-- Sample AdMob app ID: ca-app-pub-3940256099942544~3347511713 android:theme="@style/Theme.Answering -->
         <activity
-            android:name="AnsweringAPP.activities.beginner"
+            android:name="com.answering.activities.beginner"
             android:exported="false"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name="AnsweringAPP.activities.MainActivity"
+            android:name="com.answering.activities.MainActivity"
             android:exported="true"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity">
@@ -65,13 +65,11 @@
             </intent-filter>
         </activity>
 
-
-
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="@string/admob_app_id" />
         <service
-            android:name="AnsweringAPP.activities.ScreenRecordingService"
+            android:name="com.answering.activities.ScreenRecordingService"
             android:foregroundServiceType="mediaProjection" />
     </application>
 

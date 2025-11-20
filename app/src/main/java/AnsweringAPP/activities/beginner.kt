@@ -230,7 +230,6 @@ class beginner : AppCompatActivity(), HBRecorderListener {
                     if (coinsQtd >= 1) {
                         binding.preview?.visibility = View.VISIBLE
                         binding.adView?.visibility = View.INVISIBLE
-                        binding.adView2?.visibility = View.INVISIBLE
                         binding.adCam?.visibility = View.VISIBLE
                         binding.btAutomatic?.visibility = View.INVISIBLE
                         binding.btReward?.visibility = View.INVISIBLE
@@ -274,7 +273,6 @@ class beginner : AppCompatActivity(), HBRecorderListener {
                 }
                 binding.preview?.visibility = View.GONE
                 binding.adView?.visibility = View.VISIBLE
-                binding.adView2?.visibility = View.VISIBLE
                 binding.adCam?.visibility = View.GONE
                 binding.btAutomatic?.visibility = View.VISIBLE
                 binding.btReward?.visibility = View.VISIBLE
@@ -346,13 +344,11 @@ class beginner : AppCompatActivity(), HBRecorderListener {
         }
     }
     public override fun onPause() {
-        binding.adView.pause()
-        binding.adView2?.pause()
+        binding.adView?.pause()
         super.onPause()
     }
     public override fun onStop() {
-        binding.adView.pause()
-        binding.adView2?.pause()
+        binding.adView?.pause()
         super.onStop()
         if (hbRecorder!!.isBusyRecording){
             hbRecorder!!.stopScreenRecording()
@@ -362,21 +358,18 @@ class beginner : AppCompatActivity(), HBRecorderListener {
 
     public override fun onRestart() {
         super.onRestart()
-        binding.adView.resume()
-        binding.adView2?.resume()
+        binding.adView?.resume()
     }
 
     // Called when returning to the activity
     public override fun onResume() {
         super.onResume()
-        binding.adView.resume()
-        binding.adView2?.resume()
+        binding.adView?.resume()
     }
 
     // Called before the activity is destroyed
     public override fun onDestroy() {
-        binding.adView.destroy()
-        binding.adView2?.destroy()
+        binding.adView?.destroy()
         super.onDestroy()
     }
 
@@ -408,8 +401,7 @@ class beginner : AppCompatActivity(), HBRecorderListener {
 
     private fun loadBanner() {
         val adRequest = AdRequest.Builder().build()
-        binding.adView2?.loadAd(adRequest)
-        binding.adView.loadAd(adRequest)
+        binding.adView?.loadAd(adRequest)
 //      real banner  ca-app-pub-2884509228034182/8623568236
 //     teste   ca-app-pub-3940256099942544/6300978111
     }

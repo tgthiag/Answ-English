@@ -56,14 +56,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         ads:adSize="SMART_BANNER"
-        ads:layout_constraintTop_toTopOf="parent"
-        ads:layout_constraintStart_toStartOf="parent"
-        ads:layout_constraintEnd_toEndOf="parent"
         ads:adUnitId="ca-app-pub-2884509228034182/8623568236"/>
 
     <LinearLayout
         android:id="@+id/principalLinear"
-        app:layout_constraintTop_toBottomOf="@id/adView"
+        app:layout_constraintTop_toTopOf="parent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 

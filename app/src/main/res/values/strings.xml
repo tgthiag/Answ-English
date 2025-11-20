@@ -23,6 +23,11 @@
     <string name="intermediate_level_description">Situational dialogues to boost confidence in everyday chats.</string>
     <string name="advanced_level_description">Interview-style challenges without hints for fluent thinkers.</string>
     <string name="random_level_description">Mix every pack for a surprise session with all question sets.</string>
+    <string name="dialog_ok">OK</string>
+    <string name="dialog_coins_title">Need more coins?</string>
+    <string name="dialog_first_title">First time here?</string>
+    <string name="dialog_first_subtitle">Give us a second while we configure your translations.</string>
+    <string name="dialog_first_tips">Tips:\n• Use the blue arrows to advance through the questions.\n• Each level unlocks a different set of exercises.\n• Start with Beginner for quick warm-up prompts before recording videos.</string>
     <string name="coin">Coins</string>
     <string name="a_guy_sitting_in_a_big_interrogation_mark">A guy sitting in a big interrogation mark.</string>
     <string name="configuration">Settings</string>

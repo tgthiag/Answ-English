@@ -6,8 +6,14 @@ import android.content.ContentValues
 import android.content.Context
 import android.content.DialogInterface
 import android.database.sqlite.SQLiteDatabase
+import android.view.LayoutInflater
+import android.view.View
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.core.content.ContextCompat
+import com.answering.R
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import java.util.*
 
 
@@ -19,42 +25,24 @@ class DialogShow() {
                     "You can earn 3 coins by watching a video anytime.\n\nUse the automatize button to answer questions while doing your everyday things.\n\n" +
                     "Start recording videos to share on your WhatsApp, Facebook and Instagram posts, as soon as you click the camera button, it will start, tap the blue arrows for next question.\n\nEvery level has different questions, try it!"
         ).addOnSuccessListener {
-            val builder: AlertDialog.Builder = AlertDialog.Builder(ctx)
-
-                var formatado = it.replace("! ", "! \n\n").replace(". ", ". \n\n")
-                builder!!.setMessage(formatado)
-
-
-
-            builder.apply {
-                setPositiveButton("Ok") { dialog, id ->
-                    val selectedId = id
-                }
-            }
-            val dialog: AlertDialog? = builder.create()
-
-            dialog!!.show()
+            val formatted = formatParagraphs(it)
+            showInfoDialog(
+                ctx = ctx,
+                title = ctx.getString(R.string.dialog_coins_title),
+                body = formatted
+            )
         }
     }
     fun DialogCustom(ctx : Context,str: String) {
         Translate(ctx).traduzir_pergunta.translate(
             str
         ).addOnSuccessListener {
-            val builder: AlertDialog.Builder = AlertDialog.Builder(ctx)
-
-            var formatado = it.replace("! ", "! \n\n").replace(". ", ". \n\n")
-            builder!!.setMessage(formatado)
-
-
-
-            builder.apply {
-                setPositiveButton("Ok") { dialog, id ->
-                    val selectedId = id
-                }
-            }
-            val dialog: AlertDialog? = builder.create()
-
-            dialog!!.show()
+            val formatted = formatParagraphs(it)
+            showInfoDialog(
+                ctx = ctx,
+                title = null,
+                body = formatted
+            )
         }
     }
     fun DialogReview(ctx : Context,db : SQLiteDatabase,str: String) {
@@ -62,7 +50,7 @@ class DialogShow() {
             str
         ).addOnSuccessListener {
             val listItems = arrayOf("Yes, I love it!", "No I didn't like it.")
-            val mBuilder = AlertDialog.Builder(ctx)
+            val mBuilder = MaterialAlertDialogBuilder(ctx, R.style.AppDialogTheme)
             mBuilder.setTitle(it)
             mBuilder.setSingleChoiceItems(listItems, -1) { dialogInterface, i ->
 //                Translate(ctx).toastTrad("Thank you so much! We are happy to know!")
@@ -105,20 +93,44 @@ class DialogShow() {
         }
     }
     fun firstDialog(ctx : Context) {
-        var message = "First time here?\n\nWait some seconds.\n\nWe are configuring your translations.\n\n\n\n\n\nTips:\nThe blue arrows bring the next question\nWe have four levels, every level has different questions.\nStart with beginner, these are fast questions, it will be a great video."
-        val builder: AlertDialog.Builder = AlertDialog.Builder(ctx)
+        val subtitle = ctx.getString(R.string.dialog_first_subtitle)
+        val tips = ctx.getString(R.string.dialog_first_tips)
+        val body = "$subtitle\n\n$tips"
+        showInfoDialog(
+            ctx = ctx,
+            title = ctx.getString(R.string.dialog_first_title),
+            body = body
+        )
+    }
 
-        builder.setMessage(message)
+    private fun showInfoDialog(ctx: Context, title: CharSequence?, body: CharSequence) {
+        val dialogView = LayoutInflater.from(ctx).inflate(R.layout.dialog_info, null, false)
+        val titleView = dialogView.findViewById<TextView>(R.id.dialogTitle)
+        val messageView = dialogView.findViewById<TextView>(R.id.dialogMessage)
 
-        builder.apply {
-            setPositiveButton("Ok") { dialog, id ->
-                val selectedId = id
-            }
+        if (title.isNullOrBlank()) {
+            titleView.visibility = View.GONE
+        } else {
+            titleView.text = title
+            titleView.visibility = View.VISIBLE
         }
-        val dialog: AlertDialog? = builder.create()
+        messageView.text = body
 
-        dialog!!.show()
+        val dialog = MaterialAlertDialogBuilder(ctx, R.style.AppDialogTheme)
+            .setView(dialogView)
+            .setPositiveButton(R.string.dialog_ok) { dialogInterface, _ ->
+                dialogInterface.dismiss()
+            }
+            .create()
+        dialog.setOnShowListener {
+            dialog.getButton(AlertDialog.BUTTON_POSITIVE)
+                ?.setTextColor(ContextCompat.getColor(ctx, R.color.level_intermediate))
+        }
+        dialog.show()
+    }
 
+    private fun formatParagraphs(text: String): String {
+        return text.replace("! ", "! \n\n").replace(". ", ". \n\n")
     }
 }
 

@@ -29,7 +29,7 @@
     <ImageView
         android:id="@+id/adCam"
         android:layout_width="380dp"
-        android:layout_height="400dp"
+        android:layout_height="320dp"
         android:background="@drawable/download"
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"

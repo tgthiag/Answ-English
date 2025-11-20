@@ -24,11 +24,20 @@ android {
         buildConfig true
     }
 
+    signingConfigs {
+        release {
+            storeFile file("C:\\Users\\Kabum\\Downloads\\Answering.jks")
+            storePassword "swordfish123"
+            keyAlias "key0"
+            keyPassword "swordfish123"
+        }
+    }
 
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
     compileOptions {

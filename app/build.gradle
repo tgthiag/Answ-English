@@ -14,8 +14,8 @@ android {
         applicationId "com.answering"
         minSdk 23
         targetSdk 36
-        versionCode 28
-        versionName "3.10"
+        versionCode 34
+        versionName "3.14"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }

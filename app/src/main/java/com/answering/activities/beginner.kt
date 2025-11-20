@@ -288,8 +288,6 @@ class beginner : AppCompatActivity(), HBRecorderListener {
                 hbRecorder!!.stopScreenRecording()
                 if (isRecording) {
                     hbRecorder?.stopScreenRecording()
-                    val intent = Intent(this, ScreenRecordingService::class.java)
-                    stopService(intent)
                     isRecording = false // Reset the flag
                 } else {
                     Toast.makeText(this, "No recording in progress", Toast.LENGTH_SHORT).show()

@@ -50,6 +50,17 @@
     <string name="shareFriends">Share with your friends!</string>
     <string name="usinApp"># days practicing in this app!</string>
     <string name="first_day">First day using this app!</string>
+    <string name="beginner_header_title">Practice room</string>
+    <string name="beginner_header_subtitle">Earn coins, unlock harder packs and keep recording your answers.</string>
+    <string name="play_question_action">Listen to question</string>
+    <string name="play_hint_action">Listen to example</string>
+    <string name="translation_question_label">Question translation</string>
+    <string name="translation_hint_label">Example translation</string>
+    <string name="camera_toggle_label">Camera overlay</string>
+    <string name="dialog_review_message">Your feedback helps us unlock new lessons and fixes. Would you recommend Answ English to other learners?</string>
+    <string name="dialog_review_positive">Yes, I love it!</string>
+    <string name="dialog_review_negative">No, I didn\'t like it.</string>
+    <string name="dialog_review_later">Maybe later</string>
 
 
     <string name="question1" translatable="false">How old are you?</string>

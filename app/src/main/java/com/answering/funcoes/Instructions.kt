@@ -5,6 +5,8 @@ import com.answering.dados.TABLE_NAME
 import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
+import android.os.Handler
+import android.os.Looper
 
 class Instructions(var ctx: Context) {
     fun firstAcess(db : SQLiteDatabase){
@@ -18,7 +20,9 @@ class Instructions(var ctx: Context) {
             var cv = ContentValues()
             var updateAcess = isFirstAcess + 1
             cv.put(FIRSTACESS,updateAcess)
-            DialogShow().AlertDialog(ctx)
+            Handler(Looper.getMainLooper()).postDelayed({
+                DialogShow().AlertDialog(ctx)
+            }, 500) // 500ms para garantir que a Activity está pronta
             db.update(TABLE_NAME,cv,null,null)
         }
     }

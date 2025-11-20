@@ -15,6 +15,13 @@
     <string name="thirdLevel">Advanced Level (No hints)</string>
     <string name="beginInterm">Beginner + Intermediate</string>
     <string name="allLevels">All Random Questions</string>
+    <string name="home_chip_text">Weekly content refresh</string>
+    <string name="home_hero_description">Unlock fresh prompts, keep your streak alive and practice in a calm space curated for you.</string>
+    <string name="home_levels_subtitle">Each learning path was designed by teachers to match your pace and goals.</string>
+    <string name="basic_level_description">Short questions, slower pace and guided hints to help you start.</string>
+    <string name="intermediate_level_description">Situational dialogues to boost confidence in everyday chats.</string>
+    <string name="advanced_level_description">Interview-style challenges without hints for fluent thinkers.</string>
+    <string name="random_level_description">Mix every pack for a surprise session with all question sets.</string>
     <string name="coin">Coins</string>
     <string name="a_guy_sitting_in_a_big_interrogation_mark">A guy sitting in a big interrogation mark.</string>
     <string name="configuration">Settings</string>

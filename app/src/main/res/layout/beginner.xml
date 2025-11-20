@@ -8,7 +8,7 @@
     android:gravity="center"
     android:keepScreenOn="true"
     android:orientation="vertical"
-    tools:context="AnsweringAPP.activities.beginner">
+    tools:context="com.answering.activities.beginner">
 
     <androidx.camera.view.PreviewView
         android:id="@+id/preview"

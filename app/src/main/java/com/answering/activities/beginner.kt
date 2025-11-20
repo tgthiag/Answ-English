@@ -149,7 +149,7 @@ class beginner : AppCompatActivity(), HBRecorderListener {
             val dialogText = "Você pode ganhar 3 moedas assistindo a um vídeo. Deseja prosseguir e assistir ao anúncio?"
             Translate(ctx).traduzir_pergunta.translate(dialogText)
                 .addOnSuccessListener { translated ->
-                    AlertDialog.Builder(ctx)
+                    androidx.appcompat.app.AlertDialog.Builder(ctx)
                         .setMessage(translated)
                         .setPositiveButton("OK") { _, _ ->
                             rewardedAd().showAd(ctx, dbRef)
@@ -159,7 +159,7 @@ class beginner : AppCompatActivity(), HBRecorderListener {
                         .show()
                 }
                 .addOnFailureListener {
-                    AlertDialog.Builder(ctx)
+                    androidx.appcompat.app.AlertDialog.Builder(ctx)
                         .setMessage(dialogText)
                         .setPositiveButton("OK") { _, _ ->
                             rewardedAd().showAd(ctx, dbRef)

@@ -48,6 +48,7 @@
     <string name="share">Share</string>
     <string name="shareMessage">Hey! Have you tried this app? It\'s amazing for english practice!</string>
     <string name="shareFriends">Share with your friends!</string>
+    <string name="value_proposition">Tailored speaking practice, curated lessons and smart tools to accelerate your English.</string>
     <string name="usinApp"># days practicing in this app!</string>
     <string name="first_day">First day using this app!</string>
     <string name="beginner_header_title" translatable="false">Practice room</string>

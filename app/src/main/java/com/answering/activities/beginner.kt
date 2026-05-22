@@ -486,11 +486,11 @@ class beginner : AppCompatActivity(), HBRecorderListener {
     }
 
     override fun HBRecorderOnPause() {
-        TODO("Not yet implemented")
+        Log.d("HBRecorder", "Recording paused.")
     }
 
     override fun HBRecorderOnResume() {
-        TODO("Not yet implemented")
+        Log.d("HBRecorder", "Recording resumed.")
     }
 
     private var isRecording = false // Add this variable to track recording state

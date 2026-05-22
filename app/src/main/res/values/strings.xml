@@ -15,23 +15,23 @@
     <string name="thirdLevel">Advanced Level (No hints)</string>
     <string name="beginInterm">Beginner + Intermediate</string>
     <string name="allLevels">All Random Questions</string>
-    <string name="instructions_label">Instructions</string>
-    <string name="home_chip_text">Weekly content refresh</string>
-    <string name="home_hero_description">Unlock fresh prompts, keep your streak alive and practice in a calm space curated for you.</string>
-    <string name="home_levels_subtitle">Each learning path was designed by teachers to match your pace and goals.</string>
-    <string name="basic_level_description">Short questions, slower pace and guided hints to help you start.</string>
-    <string name="intermediate_level_description">Situational dialogues to boost confidence in everyday chats.</string>
-    <string name="advanced_level_description">Interview-style challenges without hints for fluent thinkers.</string>
-    <string name="random_level_description">Mix every pack for a surprise session with all question sets.</string>
-    <string name="dialog_ok">OK</string>
-    <string name="dialog_coins_title">Need more coins?</string>
-    <string name="dialog_first_title">First time here?</string>
-    <string name="dialog_first_subtitle">Give us a second while we configure your translations.</string>
-    <string name="dialog_first_tips">Tips:\n• Use the blue arrows to advance through the questions.\n• Each level unlocks a different set of exercises.\n• Start with Beginner for quick warm-up prompts before recording videos.</string>
+    <string name="instructions_label" translatable="false">Instructions</string>
+    <string name="home_chip_text" translatable="false">Weekly content refresh</string>
+    <string name="home_hero_description" translatable="false">Unlock fresh prompts, keep your streak alive and practice in a calm space curated for you.</string>
+    <string name="home_levels_subtitle" translatable="false">Each learning path was designed by teachers to match your pace and goals.</string>
+    <string name="basic_level_description" translatable="false">Short questions, slower pace and guided hints to help you start.</string>
+    <string name="intermediate_level_description" translatable="false">Situational dialogues to boost confidence in everyday chats.</string>
+    <string name="advanced_level_description" translatable="false">Interview-style challenges without hints for fluent thinkers.</string>
+    <string name="random_level_description" translatable="false">Mix every pack for a surprise session with all question sets.</string>
+    <string name="dialog_ok" translatable="false">OK</string>
+    <string name="dialog_coins_title" translatable="false">Need more coins?</string>
+    <string name="dialog_first_title" translatable="false">First time here?</string>
+    <string name="dialog_first_subtitle" translatable="false">Give us a second while we configure your translations.</string>
+    <string name="dialog_first_tips" translatable="false">Tips:\n• Use the blue arrows to advance through the questions.\n• Each level unlocks a different set of exercises.\n• Start with Beginner for quick warm-up prompts before recording videos.</string>
     <string name="coin">Coins</string>
     <string name="a_guy_sitting_in_a_big_interrogation_mark">A guy sitting in a big interrogation mark.</string>
     <string name="configuration">Settings</string>
-    <string name="choose_your_level">Choose your level</string>
+    <string name="choose_your_level" translatable="false">Choose your level</string>
     <string name="time_between_each_question_automatic">Time between each question (Automatic):</string>
     <string name="all_questions">All questions</string>
     <string name="beginner_intermediate">Beginner + Intermediate</string>
@@ -50,17 +50,17 @@
     <string name="shareFriends">Share with your friends!</string>
     <string name="usinApp"># days practicing in this app!</string>
     <string name="first_day">First day using this app!</string>
-    <string name="beginner_header_title">Practice room</string>
-    <string name="beginner_header_subtitle">Earn coins, unlock harder packs and keep recording your answers.</string>
-    <string name="play_question_action">Listen to question</string>
-    <string name="play_hint_action">Listen to example</string>
-    <string name="translation_question_label">Question translation</string>
-    <string name="translation_hint_label">Example translation</string>
-    <string name="camera_toggle_label">Camera overlay</string>
-    <string name="dialog_review_message">Your feedback helps us unlock new lessons and fixes. Would you recommend Answ English to other learners?</string>
-    <string name="dialog_review_positive">Yes, I love it!</string>
-    <string name="dialog_review_negative">No, I didn\'t like it.</string>
-    <string name="dialog_review_later">Maybe later</string>
+    <string name="beginner_header_title" translatable="false">Practice room</string>
+    <string name="beginner_header_subtitle" translatable="false">Earn coins, unlock harder packs and keep recording your answers.</string>
+    <string name="play_question_action" translatable="false">Listen to question</string>
+    <string name="play_hint_action" translatable="false">Listen to example</string>
+    <string name="translation_question_label" translatable="false">Question translation</string>
+    <string name="translation_hint_label" translatable="false">Example translation</string>
+    <string name="camera_toggle_label" translatable="false">Camera overlay</string>
+    <string name="dialog_review_message" translatable="false">Your feedback helps us unlock new lessons and fixes. Would you recommend Answ English to other learners?</string>
+    <string name="dialog_review_positive" translatable="false">Yes, I love it!</string>
+    <string name="dialog_review_negative" translatable="false">No, I didn\'t like it.</string>
+    <string name="dialog_review_later" translatable="false">Maybe later</string>
 
 
     <string name="question1" translatable="false">How old are you?</string>
